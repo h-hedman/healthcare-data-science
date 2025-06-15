@@ -1,0 +1,59 @@
+---
+title: "Chicken Movement GIS Data Example"
+output: html_document
+date: "2023-05-11"
+---
+
+```{r setup, include=FALSE, message=FALSE, warnings=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+library(RColorBrewer)
+library(ggmap)
+library(Cairo)
+library(gsheet)
+library(googlesheets4)
+library(maps)
+library(raster)
+library(sp)
+library(rgeos)
+```
+
+
+```{r }
+# Load Data
+chicken <- data.frame(gsheet2tbl('https://docs.google.com/spreadsheets/d/1o67qFCOh7dPTsS1iFXG1P_y3eLz_opFYjohoQwIpkLw/edit?usp=sharing'))
+```
+
+```{r }
+# Convert from UTM system to latitude and longitude 
+chicken_sub <- na.omit(cbind(chicken["Easting"],chicken["Northing"]))
+chicken_sp <- SpatialPoints(chicken_sub[,c("Easting","Northing")])
+proj4string(chicken_sp) <- CRS("+proj=longlat")
+newproj <- "+proj=utm +zone=17 +ellps=WGS84 +datum=WGS84 +units=km"
+chicken_sp <- spTransform(chicken_sp, CRS=CRS(newproj))
+chicken_convert <- data.frame(chicken_sp)
+# New names: latitude and longitude
+names_lat_lon <- c("Longitude", "Latitude")
+names(chicken_convert) <- names_lat_lon
+
+# Add converted lat and lon to original data 
+chicken2 <- cbind(chicken, chicken_convert)
+```
+
+Example Chicken Movement Density Plot
+Additional examples: <br>
+https://www.youtube.com/watch?v=kUFlIwpwV6M&ab_channel=HaydenHedman <br>
+https://www.youtube.com/watch?v=S1fH8pbhcTk&ab_channel=HaydenHedman
+```{r chicken2, echo=FALSE}
+density_plot <- ggplot(data=chicken2, aes(x=Longitude, y=Latitude)) + 
+  stat_density2d(aes(fill = after_stat(level)), alpha=.7, geom="polygon")+
+  scale_fill_distiller(palette = "Blues", direction = 1)+ 
+  theme(panel.border = element_rect(colour = "black", fill=NA, linewidth = 3)) + 
+  ggtitle("Example Chicken Movement Data") +
+  theme_bw() + theme(panel.grid.major = element_blank(),
+                     panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) +
+  theme(legend.position="none")
+
+print(density_plot)
+```
