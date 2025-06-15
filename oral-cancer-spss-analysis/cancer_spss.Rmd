@@ -1,0 +1,106 @@
+---
+title: "SPSS Examples with Cancer Data"
+output:
+html_document: default
+pdf_document: default
+date: "2023-06-12"
+---
+```{r setup, include = FALSE}
+library(rmarkdown)
+library(knitr)
+library(tidyverse)
+library(tidyr)
+library(haven)
+library(ggplot2)
+library(kableExtra)
+library(patchwork)
+```
+
+Example Cancer Data
+Data Source: Mid-Michigan Medical Center, Midland, Michigan, 1999: A  study of oral condition of cancer patients.
+
+Data Dictionary: http://calcnet.mth.cmich.edu/org/spss/prj_cancer_data.htm
+```{r, include = FALSE}
+cancer_df <- read_sav('cancer.sav')
+
+# Subset data
+plac <- subset(cancer_df, TRT == 0)
+treatment <- subset(cancer_df, TRT == 1)
+
+# Overall comparison by oral condition at the initial stage (two-samples t.test)
+t.test_overall = t.test(plac$TOTALCIN, treatment$TOTALCIN, mu=0, alternative="two.sided", var.equal = FALSE)
+# Comparison by oral condition at the end of week 2 (two-samples t.test)
+t.test_wk2 = t.test(plac$TOTALCW2, treatment$TOTALCW2, mu=0, alternative="two.sided", var.equal = FALSE)
+# T.test comparison by oral condition at the end of week 4
+t.test_wk4 = t.test(plac$TOTALCW4, treatment$TOTALCW4, mu=0, alternative="two.sided", var.equal = FALSE)
+# T.test comparison by oral condition at the end of week 4
+t.test_wk6 = t.test(plac$TOTALCW6, treatment$TOTALCW6, mu=0, alternative="two.sided", var.equal = FALSE)
+
+ttest_df <- tibble(
+  eow      = c("2", "4", "6"),
+  t_values = c(t.test_wk2$statistic, t.test_wk4$statistic, t.test_wk6$statistic),
+  p_values = c(t.test_wk2$p.value, t.test_wk4$p.value, t.test_wk6$p.value),
+)
+
+# Clean up table names
+names(ttest_df) <- c("Oral condition at the end of week number", "t-value", "p-value")
+
+
+# Assign week number variable
+plot_df <- cancer_df[,c("TRT", "TOTALCW2","TOTALCW4", "TOTALCW6")]
+
+plot_df <- data.frame(plot_df)
+
+colnames(plot_df)[1]<-"Group"
+plot_df$Group[which(plot_df$Group=="0")] <- "Placebo"
+plot_df$Group[which(plot_df$Group=="1")] <- "Treatment"
+plot_df$Group <- as.factor(plot_df$Group)
+plot_df[is.na(plot_df)] <- 0
+# Summarize means by week number for plotting
+sum_wk <- data.frame(group_by(plot_df, Group) %>%
+                     summarize(mean_wk2 = mean(TOTALCW2),
+                     mean_wk4 = mean(TOTALCW4),
+                     mean_wk6 = mean(TOTALCW6)))
+
+# Convert data to long format
+data_long <- gather(sum_wk, key="week_number", value="measurement", -Group)
+# Clean up week number
+data_long$week = 2 
+data_long$week[which(data_long$week_number == "mean_wk4")] <- 4
+data_long$week[which(data_long$week_number == "mean_wk6")] <- 6
+
+```
+
+Comparison of means between treatment and placebo group with one-sample t.tests
+```{r, t-test-table-output, echo=FALSE}
+
+kbl(ttest_df)
+
+```
+
+
+```{r ggplot2, warning = FALSE, echo=FALSE, out.width="50%"}
+# ggplot here
+library(patchwork)
+library(ggplot2)
+
+# Mean cancer measurement over time by treatment and placebo
+mean_group_plot <- ggplot(data_long, aes(x=week, y=measurement, fill=Group))+
+geom_bar(stat="identity",position=position_dodge())+
+scale_fill_manual(values=c("Purple", "Yellow"))+
+xlab("Oral Condition at the End of Week Number")+
+ylab("Measurement of Oral Cancer (CW)")+
+ggtitle('Cancer Measurement between Groups Over Time')+
+theme_minimal()
+
+# Scatterplot of initial cancer condition and cancer stage
+scatter_plot_stage <- ggplot(cancer_df) + 
+geom_point(aes(STAGE, TOTALCIN)) + 
+ggtitle('Cancer Stage and Oral Condition at the Initial Stage')+
+xlab("Stage")+
+ylab("Oral Condition at the Initial Stage")+
+theme_minimal()
+  
+mean_group_plot + scatter_plot_stage
+
+```
