@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthify README</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 2rem auto;
+      max-width: 900px;
+      padding: 0 1rem;
+      background-color: #fefefe;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #0071bc;
+    }
+
+    code, pre {
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 10px;
+    }
+
+    a {
+      color: #0071bc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1><em>GT OMSCS CS-6440: Introduction to Healthcare Informatics</em></h1>
+  <h2><strong>Project Practicum: Healthify - Influenza Population Health Research Metrics Web App</strong></h2>
+
+  <h2>Overview</h2>
+
+  <p><strong>🔷 End Users:</strong> <strong>This web application is specifically designed for population-based public health researchers to analyze trends in seasonal influenza.</strong></p>
+
+  <p>This web application provides real-world, population-based metrics for seasonal influenza using publicly available data from the <strong>CDC's Influenza Hospitalization Surveillance Network (FluSurv-NET)</strong>. The platform is designed to bridge the gap in understanding <strong>seasonal flu dynamics</strong> by integrating multiple levels of analysis, including:</p>
+
+  <ul>
+    <li><strong>Spatial trends</strong> (geographic distribution of flu hospitalizations)</li>
+    <li><strong>Social determinants of health</strong> (impact of socioeconomic and demographic factors, with simulation of the Social Vulnerability Index's effect on the epidemic curve)</li>
+    <li><strong>Mathematical and statistical modeling</strong> (incidence rates, forecasting, and epidemic spread models)</li>
+  </ul>
+
+  <p>By leveraging <strong>biostatistical, epidemiological, and machine learning techniques</strong>, this tool empowers public health researchers to assess flu patterns efficiently and make data-driven decisions for intervention strategies.</p>
+
+  <h2>Key Features</h2>
+
+  <h3>1. Data Collection and Processing</h3>
+  <ul>
+    <li><strong>Data Source</strong>: <a href="https://gis.cdc.gov/GRASP/Fluview/FluHospRates.html">CDC FluSurv-NET</a></li>
+    <li><strong>Coverage</strong>: Over <strong>90 U.S. counties</strong> across <strong>14 states</strong>, representing <strong>~9% of the U.S. population (~30 million people)</strong></li>
+    <li><strong>Processing</strong>:
+      <ul>
+        <li>Raw data ingestion via <strong>R</strong></li>
+        <li>Data cleaning, transformation, and aggregation</li>
+        <li>Statistical summarization (descriptive statistics, incidence rates, demographic stratifications)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>2. Analytics & Modeling</h3>
+  <ul>
+    <li><strong>Descriptive Statistics</strong>: Incidence, prevalence, demographic breakdowns</li>
+    <li><strong>Predictive Modeling</strong>:
+      <ul>
+        <li>Time Series Forecasting (ARIMA, SARIMA)</li>
+        <li>Compartmental Models (SIR, SEIR) for disease spread simulations</li>
+        <li>Machine Learning: Logistic regression for outcome predictions</li>
+      </ul>
+    </li>
+    <li><strong>Geospatial Analysis</strong>: Flu spread visualization at a county/state level</li>
+  </ul>
+
+  <h3>3. End Users</h3>
+  <p>Our tool is designed for researchers and organizations involved in <strong>population-based health outcomes research</strong>, including but not limited to:</p>
+  <ul>
+    <li><strong>Public health departments</strong> (e.g., <a href="https://sph.umich.edu">University of Michigan</a>, <a href="https://www.sph.emory.edu/">Emory University</a>)</li>
+    <li><strong>Government institutions</strong> (e.g., <a href="https://www.cdc.gov">CDC</a>, <a href="https://www.nih.gov">NIH</a>)</li>
+    <li><strong>Non-governmental organizations (NGOs)</strong> (e.g., <a href="https://healthy.kaiserpermanente.org/">Kaiser Permanente</a>)</li>
+    <li><strong>Biopharma and biotech companies</strong> (e.g., <a href="https://www.merck.com">Merck</a>, <a href="https://www.pfizer.com">Pfizer</a>, <a href="https://www.lilly.com">Eli Lilly</a>)</li>
+  </ul>
+
+  <h3>4. Data Visualization</h3>
+  <p>Given the limitation of <strong>only five deployed Shiny apps on free accounts</strong>, we use:</p>
+  <ul>
+    <li><strong>R Shiny</strong> → Interactive dashboards for detailed exploratory analysis</li>
+    <li><strong>DataWrapper</strong> → Static, embeddable visualizations for broader accessibility</li>
+  </ul>
+
+  <h2>Getting Started</h2>
+
+  <h3>1. Cloning the Repository</h3>
+
+  <pre><code>git clone https://github.gatech.edu/hhedman3/cs-6440-practicum-healthify.git
+cd cs-6440-practicum-healthify</code></pre>
+
+</body>
+</html>
