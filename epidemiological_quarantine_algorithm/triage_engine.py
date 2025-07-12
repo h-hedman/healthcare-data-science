@@ -100,3 +100,25 @@ df[report_cols].to_csv(report_path, index=False)
 # Console confirmation
 print(f"\nCompleted! Triage summary report saved to: {report_path}")
 # -------------------------------------------------------------------------------------------------------
+# Create quarantine/isolation count summary by pathogen
+summary_df = df.copy()
+
+# Filter only rows with relevant triage decisions
+summary_df = summary_df[summary_df['triage_decision'].str.startswith(('Isolate', 'Quarantine'))]
+
+# Group and count by triage_reason (pathogen)
+quarantine_counts = (
+    summary_df
+    .groupby('triage_reason')
+    .size()
+    .reset_index(name='case_count')
+    .sort_values(by='case_count', ascending=False)
+)
+
+# Save summary output
+quarantine_summary_path = OUTPUT_DIR / "triage_quarantine_count_table.csv"
+quarantine_counts.to_csv(quarantine_summary_path, index=False)
+
+# Console confirmation
+print(f"\nSimplified quarantine summary saved to: {quarantine_summary_path}")
+# -------------------------------------------------------------------------------------------------------
