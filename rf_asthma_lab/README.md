@@ -1,5 +1,8 @@
 # Asthma Risk Prediction: Occupational Exposure to Chemicals
 
+**Preprint available on medRxiv**: url pending
+
+
 This repository contains a set of scripts used to model asthma-like symptoms caused by chemical exposure in laboratory cleaning environments. Using synthetic data based on demographic, workplace, and exposure characteristics, machine learning models predict asthma risk for workers exposed to hazardous cleaning agents.
 
 ## Study Overview
