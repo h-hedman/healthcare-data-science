@@ -1,0 +1,641 @@
+patient_id|note_date|note_text
+1|2022-10-10|Patient tolerating medication without issues.
+1|2022-10-24|No gastrointestinal adverse effects reported. Patient tolerating medication without issues.
+2|2022-10-11|Started GLP-1 therapy for weight management.
+3|2022-10-14|No prior diagnosis of diabetes noted.
+3|2022-10-30|Reports intermittent gastrointestinal symptoms.
+3|2022-11-01|Denies nausea, vomiting, or abdominal pain. Semaglutide initiated at prior visit.
+4|2022-10-07|No prior diagnosis of diabetes noted.
+4|2022-10-10|GLP-1 therapy discussed during visit.
+4|2022-10-20|Patient tolerating medication without issues. History of type 2 diabetes mellitus.
+5|2022-11-17|Follow-up visit after GLP-1 initiation.
+6|2022-10-08|No prior diagnosis of diabetes noted.
+6|2022-11-18|No gastrointestinal adverse effects reported.
+7|2022-11-06|Reports mild nausea following injections. Semaglutide initiated at prior visit.
+8|2022-10-13|Patient reports increased appetite and recent weight gain. No gastrointestinal adverse effects reported.
+8|2022-10-19|No gastrointestinal adverse effects reported.
+9|2022-11-07|Reports intermittent gastrointestinal symptoms. Denies nausea, vomiting, or abdominal pain.
+9|2022-11-13|History of type 2 diabetes mellitus.
+10|2022-10-02|Denies nausea, vomiting, or abdominal pain.
+11|2022-11-09|Semaglutide initiated at prior visit.
+12|2022-10-29|Semaglutide initiated at prior visit. Patient tolerating medication without issues.
+13|2022-11-07|Reports intermittent gastrointestinal symptoms.
+14|2022-10-13|Started GLP-1 therapy for weight management.
+14|2022-11-04|HbA1c previously elevated per chart review.
+15|2022-11-13|HbA1c previously elevated per chart review.
+16|2022-10-05|Reports mild nausea following injections. Denies nausea, vomiting, or abdominal pain.
+16|2022-10-24|Reports intermittent gastrointestinal symptoms. Patient reports increased appetite and recent weight gain.
+16|2022-10-25|GLP-1 therapy discussed during visit.
+17|2022-11-29|GLP-1 therapy discussed during visit. Lifestyle modification counseling provided.
+18|2022-10-10|History of type 2 diabetes mellitus. GLP-1 therapy discussed during visit.
+19|2022-11-12|No prior diagnosis of diabetes noted.
+20|2022-10-02|Lifestyle modification counseling provided.
+20|2022-11-18|HbA1c previously elevated per chart review.
+20|2022-11-29|No gastrointestinal adverse effects reported. Started GLP-1 therapy for weight management.
+21|2022-11-16|History of type 2 diabetes mellitus. Patient tolerating medication without issues.
+21|2022-11-29|Patient reports increased appetite and recent weight gain. Reports intermittent gastrointestinal symptoms.
+22|2022-10-10|Patient tolerating medication without issues. Lifestyle modification counseling provided.
+22|2022-10-13|History of type 2 diabetes mellitus.
+22|2022-10-29|Lifestyle modification counseling provided.
+23|2022-11-01|Lifestyle modification counseling provided.
+23|2022-11-14|Started GLP-1 therapy for weight management. Follow-up visit after GLP-1 initiation.
+23|2022-11-23|No gastrointestinal adverse effects reported.
+24|2022-10-16|Patient reports increased appetite and recent weight gain. GLP-1 therapy discussed during visit.
+24|2022-10-28|Reports mild nausea following injections. History of type 2 diabetes mellitus.
+25|2022-10-10|Reports mild nausea following injections.
+25|2022-10-26|HbA1c previously elevated per chart review.
+25|2022-11-02|Patient tolerating medication without issues. HbA1c previously elevated per chart review.
+26|2022-11-20|Denies nausea, vomiting, or abdominal pain.
+27|2022-10-02|Started GLP-1 therapy for weight management. History of type 2 diabetes mellitus.
+27|2022-11-04|No prior diagnosis of diabetes noted. Patient reports increased appetite and recent weight gain.
+28|2022-10-03|Discontinued GLP-1 due to GI intolerance.
+28|2022-11-21|Reports intermittent gastrointestinal symptoms. Patient tolerating medication without issues.
+29|2022-11-19|Patient tolerating medication without issues. Patient reports increased appetite and recent weight gain.
+30|2022-10-04|History of type 2 diabetes mellitus.
+30|2022-10-29|Reports mild nausea following injections.
+30|2022-11-03|No prior diagnosis of diabetes noted. History of type 2 diabetes mellitus.
+31|2022-11-03|Reports mild nausea following injections.
+31|2022-11-20|No gastrointestinal adverse effects reported.
+32|2022-10-11|Semaglutide initiated at prior visit.
+32|2022-11-12|Patient reports increased appetite and recent weight gain. Follow-up visit after GLP-1 initiation.
+32|2022-11-16|Lifestyle modification counseling provided.
+33|2022-10-08|Patient reports increased appetite and recent weight gain.
+33|2022-10-26|GLP-1 therapy discussed during visit.
+33|2022-11-28|No prior diagnosis of diabetes noted. Semaglutide initiated at prior visit.
+34|2022-10-04|GLP-1 therapy discussed during visit. History of type 2 diabetes mellitus.
+34|2022-10-10|Started GLP-1 therapy for weight management. Reports mild nausea following injections.
+34|2022-10-30|Denies nausea, vomiting, or abdominal pain.
+35|2022-11-10|No gastrointestinal adverse effects reported. Started GLP-1 therapy for weight management.
+36|2022-11-01|Lifestyle modification counseling provided. Patient reports increased appetite and recent weight gain.
+36|2022-11-14|Semaglutide initiated at prior visit.
+37|2022-10-01|Patient reports increased appetite and recent weight gain.
+37|2022-11-21|HbA1c previously elevated per chart review. Discontinued GLP-1 due to GI intolerance.
+37|2022-11-26|Denies nausea, vomiting, or abdominal pain.
+38|2022-10-06|Lifestyle modification counseling provided.
+39|2022-10-24|Follow-up visit after GLP-1 initiation. Patient tolerating medication without issues.
+40|2022-10-05|No gastrointestinal adverse effects reported. Reports mild nausea following injections.
+40|2022-10-21|Semaglutide initiated at prior visit.
+41|2022-10-22|History of type 2 diabetes mellitus. Patient tolerating medication without issues.
+41|2022-11-26|Started GLP-1 therapy for weight management. Discontinued GLP-1 due to GI intolerance.
+42|2022-10-27|Patient reports increased appetite and recent weight gain.
+42|2022-11-16|History of type 2 diabetes mellitus. Discontinued GLP-1 due to GI intolerance.
+43|2022-10-05|Reports mild nausea following injections. History of type 2 diabetes mellitus.
+43|2022-11-05|Discontinued GLP-1 due to GI intolerance.
+44|2022-10-01|Denies nausea, vomiting, or abdominal pain.
+44|2022-10-19|History of type 2 diabetes mellitus. No gastrointestinal adverse effects reported.
+45|2022-10-30|Denies nausea, vomiting, or abdominal pain. History of type 2 diabetes mellitus.
+45|2022-11-07|Reports mild nausea following injections.
+45|2022-11-24|Denies nausea, vomiting, or abdominal pain. Discontinued GLP-1 due to GI intolerance.
+46|2022-10-19|HbA1c previously elevated per chart review. Reports intermittent gastrointestinal symptoms.
+46|2022-11-15|No gastrointestinal adverse effects reported. HbA1c previously elevated per chart review.
+47|2022-11-28|Semaglutide initiated at prior visit.
+48|2022-10-21|Follow-up visit after GLP-1 initiation. Semaglutide initiated at prior visit.
+48|2022-10-28|Reports intermittent gastrointestinal symptoms.
+48|2022-10-30|Reports mild nausea following injections.
+49|2022-10-22|Reports intermittent gastrointestinal symptoms.
+49|2022-10-28|Patient reports increased appetite and recent weight gain.
+50|2022-11-03|Reports mild nausea following injections.
+50|2022-11-04|HbA1c previously elevated per chart review.
+50|2022-11-15|Semaglutide initiated at prior visit. Patient tolerating medication without issues.
+51|2022-10-15|HbA1c previously elevated per chart review. No gastrointestinal adverse effects reported.
+51|2022-10-22|HbA1c previously elevated per chart review. History of type 2 diabetes mellitus.
+51|2022-11-27|HbA1c previously elevated per chart review.
+52|2022-11-13|Reports mild nausea following injections.
+52|2022-11-19|Follow-up visit after GLP-1 initiation.
+53|2022-10-25|Started GLP-1 therapy for weight management. Discontinued GLP-1 due to GI intolerance.
+53|2022-11-24|Denies nausea, vomiting, or abdominal pain.
+54|2022-11-13|Reports mild nausea following injections. Patient reports increased appetite and recent weight gain.
+54|2022-11-19|No gastrointestinal adverse effects reported. Reports intermittent gastrointestinal symptoms.
+55|2022-10-18|Discontinued GLP-1 due to GI intolerance. Follow-up visit after GLP-1 initiation.
+56|2022-10-27|No prior diagnosis of diabetes noted. Lifestyle modification counseling provided.
+56|2022-11-04|Patient reports increased appetite and recent weight gain.
+56|2022-11-23|Follow-up visit after GLP-1 initiation. Reports mild nausea following injections.
+57|2022-10-31|No prior diagnosis of diabetes noted.
+58|2022-11-07|Follow-up visit after GLP-1 initiation.
+59|2022-11-04|Reports intermittent gastrointestinal symptoms.
+59|2022-11-17|Reports intermittent gastrointestinal symptoms. Discontinued GLP-1 due to GI intolerance.
+60|2022-11-21|Patient reports increased appetite and recent weight gain.
+61|2022-10-16|GLP-1 therapy discussed during visit.
+61|2022-10-26|GLP-1 therapy discussed during visit. Patient tolerating medication without issues.
+61|2022-11-12|Discontinued GLP-1 due to GI intolerance.
+62|2022-10-23|Patient tolerating medication without issues. Semaglutide initiated at prior visit.
+63|2022-10-05|Denies nausea, vomiting, or abdominal pain.
+64|2022-10-04|Follow-up visit after GLP-1 initiation. GLP-1 therapy discussed during visit.
+64|2022-10-07|Reports mild nausea following injections.
+64|2022-10-27|Patient tolerating medication without issues.
+65|2022-10-28|Lifestyle modification counseling provided.
+66|2022-10-25|History of type 2 diabetes mellitus. HbA1c previously elevated per chart review.
+66|2022-11-06|History of type 2 diabetes mellitus. Denies nausea, vomiting, or abdominal pain.
+67|2022-11-20|Semaglutide initiated at prior visit. Denies nausea, vomiting, or abdominal pain.
+68|2022-10-07|Reports mild nausea following injections. HbA1c previously elevated per chart review.
+68|2022-10-10|GLP-1 therapy discussed during visit.
+68|2022-11-23|Discontinued GLP-1 due to GI intolerance.
+69|2022-10-11|Patient tolerating medication without issues.
+69|2022-11-08|Lifestyle modification counseling provided.
+69|2022-11-26|Denies nausea, vomiting, or abdominal pain.
+70|2022-10-24|Reports intermittent gastrointestinal symptoms.
+70|2022-11-15|GLP-1 therapy discussed during visit. HbA1c previously elevated per chart review.
+71|2022-10-15|History of type 2 diabetes mellitus.
+71|2022-11-13|Patient tolerating medication without issues.
+72|2022-10-10|No gastrointestinal adverse effects reported. Denies nausea, vomiting, or abdominal pain.
+72|2022-10-19|Started GLP-1 therapy for weight management.
+72|2022-10-27|Patient tolerating medication without issues. Semaglutide initiated at prior visit.
+73|2022-10-01|Discontinued GLP-1 due to GI intolerance. Reports mild nausea following injections.
+73|2022-10-11|GLP-1 therapy discussed during visit. Denies nausea, vomiting, or abdominal pain.
+73|2022-11-13|Patient tolerating medication without issues.
+74|2022-10-07|No prior diagnosis of diabetes noted. HbA1c previously elevated per chart review.
+74|2022-10-29|Reports mild nausea following injections.
+74|2022-11-28|No gastrointestinal adverse effects reported.
+75|2022-10-11|No gastrointestinal adverse effects reported. Discontinued GLP-1 due to GI intolerance.
+75|2022-10-19|Semaglutide initiated at prior visit. Reports intermittent gastrointestinal symptoms.
+75|2022-11-06|Reports mild nausea following injections.
+76|2022-10-11|No gastrointestinal adverse effects reported. Follow-up visit after GLP-1 initiation.
+76|2022-10-12|Started GLP-1 therapy for weight management.
+77|2022-10-12|History of type 2 diabetes mellitus. HbA1c previously elevated per chart review.
+77|2022-10-18|Follow-up visit after GLP-1 initiation. History of type 2 diabetes mellitus.
+77|2022-10-28|HbA1c previously elevated per chart review. No prior diagnosis of diabetes noted.
+78|2022-10-20|No prior diagnosis of diabetes noted.
+78|2022-11-10|Discontinued GLP-1 due to GI intolerance.
+78|2022-11-28|Denies nausea, vomiting, or abdominal pain. Discontinued GLP-1 due to GI intolerance.
+79|2022-11-11|No gastrointestinal adverse effects reported. Follow-up visit after GLP-1 initiation.
+80|2022-10-16|Patient reports increased appetite and recent weight gain.
+80|2022-11-29|Denies nausea, vomiting, or abdominal pain. HbA1c previously elevated per chart review.
+81|2022-11-14|Lifestyle modification counseling provided. Follow-up visit after GLP-1 initiation.
+82|2022-10-16|Reports intermittent gastrointestinal symptoms.
+83|2022-10-01|HbA1c previously elevated per chart review.
+83|2022-10-27|Denies nausea, vomiting, or abdominal pain.
+84|2022-11-08|History of type 2 diabetes mellitus. HbA1c previously elevated per chart review.
+84|2022-11-16|Patient tolerating medication without issues.
+85|2022-10-02|GLP-1 therapy discussed during visit. No gastrointestinal adverse effects reported.
+86|2022-11-09|Reports mild nausea following injections.
+87|2022-10-22|Semaglutide initiated at prior visit. No prior diagnosis of diabetes noted.
+88|2022-11-15|No gastrointestinal adverse effects reported. Reports mild nausea following injections.
+88|2022-11-22|Lifestyle modification counseling provided. Patient reports increased appetite and recent weight gain.
+88|2022-11-28|GLP-1 therapy discussed during visit. Discontinued GLP-1 due to GI intolerance.
+89|2022-10-19|Reports mild nausea following injections.
+89|2022-11-02|Reports intermittent gastrointestinal symptoms.
+90|2022-10-05|GLP-1 therapy discussed during visit. Lifestyle modification counseling provided.
+90|2022-10-25|Patient tolerating medication without issues. Patient reports increased appetite and recent weight gain.
+90|2022-11-04|Lifestyle modification counseling provided.
+91|2022-10-14|Lifestyle modification counseling provided. Reports intermittent gastrointestinal symptoms.
+91|2022-10-30|Started GLP-1 therapy for weight management. No gastrointestinal adverse effects reported.
+91|2022-11-02|No gastrointestinal adverse effects reported.
+92|2022-10-08|Patient tolerating medication without issues.
+92|2022-10-16|No prior diagnosis of diabetes noted.
+92|2022-11-27|Lifestyle modification counseling provided. Follow-up visit after GLP-1 initiation.
+93|2022-11-04|Denies nausea, vomiting, or abdominal pain. Started GLP-1 therapy for weight management.
+93|2022-11-23|Follow-up visit after GLP-1 initiation.
+94|2022-11-01|Reports intermittent gastrointestinal symptoms. Follow-up visit after GLP-1 initiation.
+94|2022-11-21|Lifestyle modification counseling provided. History of type 2 diabetes mellitus.
+95|2022-10-22|Reports intermittent gastrointestinal symptoms.
+96|2022-10-26|No prior diagnosis of diabetes noted.
+96|2022-11-19|No prior diagnosis of diabetes noted. History of type 2 diabetes mellitus.
+97|2022-11-15|Denies nausea, vomiting, or abdominal pain.
+98|2022-10-26|No gastrointestinal adverse effects reported. Patient tolerating medication without issues.
+99|2022-10-17|Reports mild nausea following injections.
+99|2022-11-18|No prior diagnosis of diabetes noted. Lifestyle modification counseling provided.
+99|2022-11-25|Reports mild nausea following injections. Follow-up visit after GLP-1 initiation.
+100|2022-10-12|Reports mild nausea following injections.
+100|2022-11-12|GLP-1 therapy discussed during visit. No prior diagnosis of diabetes noted.
+100|2022-11-27|No prior diagnosis of diabetes noted.
+101|2022-10-16|History of type 2 diabetes mellitus. Reports mild nausea following injections.
+102|2022-11-13|Reports mild nausea following injections.
+102|2022-11-17|Denies nausea, vomiting, or abdominal pain.
+102|2022-11-22|Follow-up visit after GLP-1 initiation. Started GLP-1 therapy for weight management.
+103|2022-10-15|Started GLP-1 therapy for weight management.
+103|2022-10-17|Denies nausea, vomiting, or abdominal pain.
+103|2022-11-04|No prior diagnosis of diabetes noted.
+104|2022-11-07|No gastrointestinal adverse effects reported. Reports intermittent gastrointestinal symptoms.
+105|2022-10-24|HbA1c previously elevated per chart review. Patient reports increased appetite and recent weight gain.
+105|2022-11-11|Denies nausea, vomiting, or abdominal pain. GLP-1 therapy discussed during visit.
+105|2022-11-15|Semaglutide initiated at prior visit. HbA1c previously elevated per chart review.
+106|2022-10-22|Started GLP-1 therapy for weight management. Lifestyle modification counseling provided.
+107|2022-10-12|GLP-1 therapy discussed during visit.
+107|2022-11-07|Semaglutide initiated at prior visit. Discontinued GLP-1 due to GI intolerance.
+107|2022-11-16|No prior diagnosis of diabetes noted. History of type 2 diabetes mellitus.
+108|2022-10-06|Reports mild nausea following injections.
+108|2022-10-11|HbA1c previously elevated per chart review.
+109|2022-11-28|Discontinued GLP-1 due to GI intolerance.
+110|2022-10-30|Started GLP-1 therapy for weight management.
+110|2022-11-15|Patient tolerating medication without issues. Discontinued GLP-1 due to GI intolerance.
+111|2022-11-13|Started GLP-1 therapy for weight management.
+111|2022-11-26|HbA1c previously elevated per chart review. GLP-1 therapy discussed during visit.
+112|2022-10-08|Follow-up visit after GLP-1 initiation.
+112|2022-10-13|Reports intermittent gastrointestinal symptoms. HbA1c previously elevated per chart review.
+113|2022-10-20|Denies nausea, vomiting, or abdominal pain.
+114|2022-10-25|No prior diagnosis of diabetes noted. Follow-up visit after GLP-1 initiation.
+114|2022-11-24|Reports intermittent gastrointestinal symptoms.
+115|2022-10-25|Denies nausea, vomiting, or abdominal pain. Patient reports increased appetite and recent weight gain.
+115|2022-11-01|History of type 2 diabetes mellitus. Patient tolerating medication without issues.
+115|2022-11-02|GLP-1 therapy discussed during visit. Patient reports increased appetite and recent weight gain.
+116|2022-10-02|Started GLP-1 therapy for weight management.
+116|2022-11-25|HbA1c previously elevated per chart review. Denies nausea, vomiting, or abdominal pain.
+117|2022-11-01|Follow-up visit after GLP-1 initiation.
+118|2022-10-31|Follow-up visit after GLP-1 initiation.
+119|2022-10-07|Reports intermittent gastrointestinal symptoms. No gastrointestinal adverse effects reported.
+119|2022-11-07|Reports intermittent gastrointestinal symptoms.
+120|2022-10-09|No gastrointestinal adverse effects reported. Patient tolerating medication without issues.
+120|2022-10-17|Patient reports increased appetite and recent weight gain.
+121|2022-10-08|Lifestyle modification counseling provided.
+122|2022-10-03|Denies nausea, vomiting, or abdominal pain.
+122|2022-11-13|No prior diagnosis of diabetes noted.
+123|2022-11-14|Denies nausea, vomiting, or abdominal pain. No prior diagnosis of diabetes noted.
+123|2022-11-16|Follow-up visit after GLP-1 initiation.
+123|2022-11-23|No prior diagnosis of diabetes noted.
+124|2022-11-21|History of type 2 diabetes mellitus. Denies nausea, vomiting, or abdominal pain.
+125|2022-10-06|Follow-up visit after GLP-1 initiation.
+125|2022-11-26|No gastrointestinal adverse effects reported.
+126|2022-10-01|Denies nausea, vomiting, or abdominal pain.
+126|2022-10-26|Patient reports increased appetite and recent weight gain. History of type 2 diabetes mellitus.
+127|2022-11-02|Discontinued GLP-1 due to GI intolerance.
+127|2022-11-10|No prior diagnosis of diabetes noted. Patient reports increased appetite and recent weight gain.
+128|2022-10-02|No prior diagnosis of diabetes noted. HbA1c previously elevated per chart review.
+128|2022-11-06|Reports intermittent gastrointestinal symptoms. HbA1c previously elevated per chart review.
+128|2022-11-20|Patient tolerating medication without issues. No prior diagnosis of diabetes noted.
+129|2022-10-14|Started GLP-1 therapy for weight management. Lifestyle modification counseling provided.
+129|2022-10-17|Denies nausea, vomiting, or abdominal pain. Reports mild nausea following injections.
+129|2022-11-17|GLP-1 therapy discussed during visit.
+130|2022-10-04|Follow-up visit after GLP-1 initiation.
+130|2022-10-06|Reports mild nausea following injections. History of type 2 diabetes mellitus.
+130|2022-10-17|Reports mild nausea following injections. Patient reports increased appetite and recent weight gain.
+131|2022-10-19|Reports mild nausea following injections. No prior diagnosis of diabetes noted.
+132|2022-10-02|No gastrointestinal adverse effects reported.
+133|2022-10-05|Lifestyle modification counseling provided.
+133|2022-10-08|Follow-up visit after GLP-1 initiation. GLP-1 therapy discussed during visit.
+134|2022-10-15|GLP-1 therapy discussed during visit.
+135|2022-10-12|No gastrointestinal adverse effects reported. Lifestyle modification counseling provided.
+135|2022-11-04|Semaglutide initiated at prior visit.
+136|2022-10-07|No gastrointestinal adverse effects reported.
+136|2022-11-08|No gastrointestinal adverse effects reported.
+137|2022-10-29|No gastrointestinal adverse effects reported.
+137|2022-11-02|Started GLP-1 therapy for weight management. HbA1c previously elevated per chart review.
+137|2022-11-18|GLP-1 therapy discussed during visit.
+138|2022-10-08|Lifestyle modification counseling provided.
+138|2022-11-01|No gastrointestinal adverse effects reported. Started GLP-1 therapy for weight management.
+138|2022-11-24|Discontinued GLP-1 due to GI intolerance.
+139|2022-10-04|No prior diagnosis of diabetes noted. GLP-1 therapy discussed during visit.
+139|2022-11-11|Started GLP-1 therapy for weight management. Denies nausea, vomiting, or abdominal pain.
+140|2022-10-14|Discontinued GLP-1 due to GI intolerance. Reports mild nausea following injections.
+140|2022-10-17|Discontinued GLP-1 due to GI intolerance. Reports intermittent gastrointestinal symptoms.
+140|2022-11-26|Reports intermittent gastrointestinal symptoms.
+141|2022-10-11|Patient reports increased appetite and recent weight gain.
+141|2022-10-23|Reports mild nausea following injections. Follow-up visit after GLP-1 initiation.
+141|2022-10-30|Started GLP-1 therapy for weight management.
+142|2022-10-21|Patient tolerating medication without issues.
+143|2022-10-11|Discontinued GLP-1 due to GI intolerance.
+143|2022-11-07|Denies nausea, vomiting, or abdominal pain.
+144|2022-10-01|Denies nausea, vomiting, or abdominal pain. Follow-up visit after GLP-1 initiation.
+144|2022-11-15|Patient tolerating medication without issues.
+144|2022-11-25|History of type 2 diabetes mellitus.
+145|2022-11-19|Reports intermittent gastrointestinal symptoms. Denies nausea, vomiting, or abdominal pain.
+146|2022-10-23|HbA1c previously elevated per chart review.
+147|2022-10-26|HbA1c previously elevated per chart review. Lifestyle modification counseling provided.
+147|2022-11-10|No prior diagnosis of diabetes noted.
+148|2022-11-09|Reports mild nausea following injections. HbA1c previously elevated per chart review.
+148|2022-11-28|GLP-1 therapy discussed during visit. No gastrointestinal adverse effects reported.
+149|2022-10-04|Lifestyle modification counseling provided.
+150|2022-10-14|Discontinued GLP-1 due to GI intolerance.
+150|2022-11-11|No gastrointestinal adverse effects reported.
+150|2022-11-26|Patient reports increased appetite and recent weight gain. Lifestyle modification counseling provided.
+151|2022-10-06|Patient tolerating medication without issues.
+151|2022-11-29|Reports mild nausea following injections.
+152|2022-10-19|History of type 2 diabetes mellitus. Denies nausea, vomiting, or abdominal pain.
+152|2022-11-06|Denies nausea, vomiting, or abdominal pain.
+153|2022-10-15|Discontinued GLP-1 due to GI intolerance.
+153|2022-10-30|Lifestyle modification counseling provided. Reports mild nausea following injections.
+154|2022-10-06|Discontinued GLP-1 due to GI intolerance.
+154|2022-10-13|No prior diagnosis of diabetes noted. Started GLP-1 therapy for weight management.
+154|2022-11-20|Follow-up visit after GLP-1 initiation.
+155|2022-11-14|No gastrointestinal adverse effects reported. No prior diagnosis of diabetes noted.
+155|2022-11-16|Patient tolerating medication without issues.
+155|2022-11-19|Denies nausea, vomiting, or abdominal pain.
+156|2022-10-21|Denies nausea, vomiting, or abdominal pain.
+157|2022-10-08|Discontinued GLP-1 due to GI intolerance. No prior diagnosis of diabetes noted.
+157|2022-11-12|Started GLP-1 therapy for weight management.
+158|2022-11-20|No prior diagnosis of diabetes noted. Semaglutide initiated at prior visit.
+158|2022-11-24|No prior diagnosis of diabetes noted. History of type 2 diabetes mellitus.
+159|2022-10-20|Started GLP-1 therapy for weight management. Follow-up visit after GLP-1 initiation.
+159|2022-10-22|Lifestyle modification counseling provided. GLP-1 therapy discussed during visit.
+160|2022-11-15|Patient tolerating medication without issues. HbA1c previously elevated per chart review.
+161|2022-11-04|Follow-up visit after GLP-1 initiation.
+162|2022-10-23|No prior diagnosis of diabetes noted. Semaglutide initiated at prior visit.
+163|2022-10-07|Reports intermittent gastrointestinal symptoms. Denies nausea, vomiting, or abdominal pain.
+163|2022-10-15|GLP-1 therapy discussed during visit.
+163|2022-11-14|Follow-up visit after GLP-1 initiation. GLP-1 therapy discussed during visit.
+164|2022-10-08|No gastrointestinal adverse effects reported.
+164|2022-10-09|Follow-up visit after GLP-1 initiation. Started GLP-1 therapy for weight management.
+164|2022-10-24|Lifestyle modification counseling provided. Denies nausea, vomiting, or abdominal pain.
+165|2022-10-26|Reports mild nausea following injections. Reports intermittent gastrointestinal symptoms.
+166|2022-10-06|History of type 2 diabetes mellitus. HbA1c previously elevated per chart review.
+166|2022-10-27|Follow-up visit after GLP-1 initiation.
+167|2022-10-05|Patient tolerating medication without issues.
+167|2022-11-05|Reports mild nausea following injections. Patient tolerating medication without issues.
+167|2022-11-19|GLP-1 therapy discussed during visit. Follow-up visit after GLP-1 initiation.
+168|2022-10-31|No gastrointestinal adverse effects reported.
+168|2022-11-15|Started GLP-1 therapy for weight management. Lifestyle modification counseling provided.
+168|2022-11-25|HbA1c previously elevated per chart review.
+169|2022-10-10|Discontinued GLP-1 due to GI intolerance. HbA1c previously elevated per chart review.
+169|2022-10-29|Denies nausea, vomiting, or abdominal pain. GLP-1 therapy discussed during visit.
+169|2022-11-13|Discontinued GLP-1 due to GI intolerance. Denies nausea, vomiting, or abdominal pain.
+170|2022-10-29|Denies nausea, vomiting, or abdominal pain. No prior diagnosis of diabetes noted.
+171|2022-10-27|Semaglutide initiated at prior visit.
+171|2022-11-29|Patient tolerating medication without issues. Denies nausea, vomiting, or abdominal pain.
+172|2022-10-01|No gastrointestinal adverse effects reported.
+172|2022-11-28|GLP-1 therapy discussed during visit. No prior diagnosis of diabetes noted.
+173|2022-10-21|Started GLP-1 therapy for weight management.
+174|2022-10-16|History of type 2 diabetes mellitus. GLP-1 therapy discussed during visit.
+174|2022-10-29|No gastrointestinal adverse effects reported.
+174|2022-11-23|Semaglutide initiated at prior visit. Reports intermittent gastrointestinal symptoms.
+175|2022-10-17|Reports intermittent gastrointestinal symptoms.
+175|2022-11-03|Discontinued GLP-1 due to GI intolerance. No gastrointestinal adverse effects reported.
+176|2022-10-21|Patient reports increased appetite and recent weight gain. Reports mild nausea following injections.
+176|2022-11-04|Started GLP-1 therapy for weight management.
+177|2022-10-12|History of type 2 diabetes mellitus.
+177|2022-11-17|Semaglutide initiated at prior visit.
+178|2022-10-04|Semaglutide initiated at prior visit. No gastrointestinal adverse effects reported.
+178|2022-10-14|HbA1c previously elevated per chart review.
+178|2022-10-15|Patient tolerating medication without issues.
+179|2022-10-27|Patient reports increased appetite and recent weight gain. Lifestyle modification counseling provided.
+180|2022-10-09|Follow-up visit after GLP-1 initiation.
+180|2022-11-10|Reports intermittent gastrointestinal symptoms. Lifestyle modification counseling provided.
+181|2022-10-02|No gastrointestinal adverse effects reported. History of type 2 diabetes mellitus.
+181|2022-10-25|Reports intermittent gastrointestinal symptoms. Denies nausea, vomiting, or abdominal pain.
+182|2022-10-21|Reports intermittent gastrointestinal symptoms. Patient reports increased appetite and recent weight gain.
+182|2022-10-22|HbA1c previously elevated per chart review.
+182|2022-11-08|Reports mild nausea following injections. Lifestyle modification counseling provided.
+183|2022-10-01|Follow-up visit after GLP-1 initiation. Reports intermittent gastrointestinal symptoms.
+184|2022-10-06|History of type 2 diabetes mellitus.
+184|2022-10-17|Reports intermittent gastrointestinal symptoms.
+184|2022-10-19|Reports intermittent gastrointestinal symptoms. HbA1c previously elevated per chart review.
+185|2022-10-12|HbA1c previously elevated per chart review. Patient tolerating medication without issues.
+185|2022-11-04|Reports intermittent gastrointestinal symptoms. No gastrointestinal adverse effects reported.
+185|2022-11-29|Reports mild nausea following injections.
+186|2022-10-10|Reports intermittent gastrointestinal symptoms.
+186|2022-11-14|Reports intermittent gastrointestinal symptoms. Denies nausea, vomiting, or abdominal pain.
+186|2022-11-17|Lifestyle modification counseling provided. No prior diagnosis of diabetes noted.
+187|2022-10-23|History of type 2 diabetes mellitus. No prior diagnosis of diabetes noted.
+187|2022-11-08|Lifestyle modification counseling provided. Denies nausea, vomiting, or abdominal pain.
+187|2022-11-22|No prior diagnosis of diabetes noted. Patient reports increased appetite and recent weight gain.
+188|2022-10-28|No gastrointestinal adverse effects reported. Follow-up visit after GLP-1 initiation.
+188|2022-11-17|Lifestyle modification counseling provided. Discontinued GLP-1 due to GI intolerance.
+189|2022-11-05|Semaglutide initiated at prior visit. No gastrointestinal adverse effects reported.
+190|2022-11-06|Discontinued GLP-1 due to GI intolerance.
+191|2022-10-28|HbA1c previously elevated per chart review.
+191|2022-11-03|GLP-1 therapy discussed during visit.
+191|2022-11-18|HbA1c previously elevated per chart review. History of type 2 diabetes mellitus.
+192|2022-10-25|Reports intermittent gastrointestinal symptoms.
+192|2022-11-04|Lifestyle modification counseling provided.
+192|2022-11-19|Patient tolerating medication without issues. History of type 2 diabetes mellitus.
+193|2022-11-02|GLP-1 therapy discussed during visit.
+193|2022-11-29|No gastrointestinal adverse effects reported. Follow-up visit after GLP-1 initiation.
+194|2022-10-05|Reports mild nausea following injections. No prior diagnosis of diabetes noted.
+194|2022-11-19|GLP-1 therapy discussed during visit. No gastrointestinal adverse effects reported.
+195|2022-10-22|Discontinued GLP-1 due to GI intolerance.
+195|2022-11-22|Discontinued GLP-1 due to GI intolerance. Patient tolerating medication without issues.
+196|2022-11-19|Semaglutide initiated at prior visit.
+197|2022-10-31|HbA1c previously elevated per chart review. Started GLP-1 therapy for weight management.
+198|2022-10-12|Semaglutide initiated at prior visit. Discontinued GLP-1 due to GI intolerance.
+198|2022-10-17|Denies nausea, vomiting, or abdominal pain. No gastrointestinal adverse effects reported.
+199|2022-11-25|No gastrointestinal adverse effects reported.
+200|2022-10-11|Patient reports increased appetite and recent weight gain. Reports intermittent gastrointestinal symptoms.
+200|2022-10-29|Semaglutide initiated at prior visit. Lifestyle modification counseling provided.
+200|2022-11-07|Patient tolerating medication without issues.
+201|2022-10-09|Reports mild nausea following injections. GLP-1 therapy discussed during visit.
+201|2022-11-01|Patient tolerating medication without issues. Patient reports increased appetite and recent weight gain.
+201|2022-11-02|Lifestyle modification counseling provided.
+202|2022-10-19|Started GLP-1 therapy for weight management.
+202|2022-10-21|Follow-up visit after GLP-1 initiation.
+202|2022-11-23|GLP-1 therapy discussed during visit.
+203|2022-10-29|Reports intermittent gastrointestinal symptoms. Patient reports increased appetite and recent weight gain.
+203|2022-11-19|Reports mild nausea following injections. Discontinued GLP-1 due to GI intolerance.
+203|2022-11-28|History of type 2 diabetes mellitus. No prior diagnosis of diabetes noted.
+204|2022-10-28|GLP-1 therapy discussed during visit.
+205|2022-10-05|Discontinued GLP-1 due to GI intolerance.
+205|2022-10-07|No gastrointestinal adverse effects reported.
+206|2022-10-05|No prior diagnosis of diabetes noted.
+206|2022-10-08|Patient tolerating medication without issues.
+206|2022-11-23|Reports mild nausea following injections.
+207|2022-10-27|Reports mild nausea following injections. Discontinued GLP-1 due to GI intolerance.
+208|2022-10-19|Follow-up visit after GLP-1 initiation. Reports mild nausea following injections.
+209|2022-11-05|Patient reports increased appetite and recent weight gain. HbA1c previously elevated per chart review.
+209|2022-11-24|History of type 2 diabetes mellitus. GLP-1 therapy discussed during visit.
+210|2022-10-02|Patient tolerating medication without issues. No prior diagnosis of diabetes noted.
+210|2022-11-17|Reports mild nausea following injections. Patient reports increased appetite and recent weight gain.
+210|2022-11-19|GLP-1 therapy discussed during visit.
+211|2022-10-12|Patient reports increased appetite and recent weight gain. History of type 2 diabetes mellitus.
+211|2022-11-04|Reports mild nausea following injections.
+211|2022-11-20|Semaglutide initiated at prior visit. Denies nausea, vomiting, or abdominal pain.
+212|2022-11-06|Lifestyle modification counseling provided.
+212|2022-11-11|Semaglutide initiated at prior visit. Reports mild nausea following injections.
+213|2022-10-27|No gastrointestinal adverse effects reported. HbA1c previously elevated per chart review.
+213|2022-10-28|No prior diagnosis of diabetes noted. HbA1c previously elevated per chart review.
+213|2022-11-15|History of type 2 diabetes mellitus.
+214|2022-10-30|Patient reports increased appetite and recent weight gain. Patient tolerating medication without issues.
+214|2022-11-19|Follow-up visit after GLP-1 initiation. Reports intermittent gastrointestinal symptoms.
+214|2022-11-24|Semaglutide initiated at prior visit. HbA1c previously elevated per chart review.
+215|2022-10-25|No gastrointestinal adverse effects reported.
+216|2022-10-09|Lifestyle modification counseling provided. Started GLP-1 therapy for weight management.
+216|2022-11-13|Patient tolerating medication without issues. Denies nausea, vomiting, or abdominal pain.
+217|2022-11-03|GLP-1 therapy discussed during visit. Patient reports increased appetite and recent weight gain.
+217|2022-11-10|Follow-up visit after GLP-1 initiation. Denies nausea, vomiting, or abdominal pain.
+217|2022-11-23|Reports intermittent gastrointestinal symptoms. Lifestyle modification counseling provided.
+218|2022-10-10|Patient tolerating medication without issues. No gastrointestinal adverse effects reported.
+218|2022-11-29|No gastrointestinal adverse effects reported.
+219|2022-10-29|Lifestyle modification counseling provided. Patient tolerating medication without issues.
+220|2022-10-27|No prior diagnosis of diabetes noted. Follow-up visit after GLP-1 initiation.
+221|2022-10-19|Denies nausea, vomiting, or abdominal pain. Reports intermittent gastrointestinal symptoms.
+221|2022-10-26|Denies nausea, vomiting, or abdominal pain. Reports mild nausea following injections.
+222|2022-10-05|Reports mild nausea following injections.
+222|2022-11-26|Discontinued GLP-1 due to GI intolerance. Started GLP-1 therapy for weight management.
+223|2022-10-01|Lifestyle modification counseling provided.
+223|2022-11-15|No prior diagnosis of diabetes noted. History of type 2 diabetes mellitus.
+224|2022-10-16|HbA1c previously elevated per chart review.
+225|2022-11-14|Patient reports increased appetite and recent weight gain.
+225|2022-11-17|Discontinued GLP-1 due to GI intolerance.
+226|2022-11-26|Patient reports increased appetite and recent weight gain.
+227|2022-10-10|No gastrointestinal adverse effects reported. History of type 2 diabetes mellitus.
+227|2022-10-17|HbA1c previously elevated per chart review.
+227|2022-11-09|No prior diagnosis of diabetes noted.
+228|2022-10-26|Reports intermittent gastrointestinal symptoms.
+228|2022-11-07|HbA1c previously elevated per chart review.
+228|2022-11-28|Follow-up visit after GLP-1 initiation. No gastrointestinal adverse effects reported.
+229|2022-11-23|History of type 2 diabetes mellitus. Started GLP-1 therapy for weight management.
+230|2022-10-01|Lifestyle modification counseling provided. Semaglutide initiated at prior visit.
+231|2022-11-05|Patient reports increased appetite and recent weight gain.
+231|2022-11-23|HbA1c previously elevated per chart review. Discontinued GLP-1 due to GI intolerance.
+231|2022-11-27|Patient tolerating medication without issues. Reports intermittent gastrointestinal symptoms.
+232|2022-10-25|Discontinued GLP-1 due to GI intolerance. Started GLP-1 therapy for weight management.
+232|2022-10-27|Denies nausea, vomiting, or abdominal pain. HbA1c previously elevated per chart review.
+233|2022-10-07|Patient tolerating medication without issues. HbA1c previously elevated per chart review.
+233|2022-11-18|Reports intermittent gastrointestinal symptoms. GLP-1 therapy discussed during visit.
+234|2022-10-28|Patient reports increased appetite and recent weight gain.
+234|2022-11-18|Denies nausea, vomiting, or abdominal pain. Semaglutide initiated at prior visit.
+235|2022-10-04|Semaglutide initiated at prior visit.
+236|2022-10-30|Denies nausea, vomiting, or abdominal pain. No prior diagnosis of diabetes noted.
+236|2022-11-03|Patient tolerating medication without issues. No prior diagnosis of diabetes noted.
+237|2022-10-28|Reports intermittent gastrointestinal symptoms.
+238|2022-10-13|Semaglutide initiated at prior visit. Started GLP-1 therapy for weight management.
+239|2022-11-07|Lifestyle modification counseling provided.
+240|2022-10-03|Started GLP-1 therapy for weight management. No prior diagnosis of diabetes noted.
+240|2022-10-15|Discontinued GLP-1 due to GI intolerance. Denies nausea, vomiting, or abdominal pain.
+240|2022-11-08|Reports mild nausea following injections. No gastrointestinal adverse effects reported.
+241|2022-10-03|Patient tolerating medication without issues.
+241|2022-10-10|Reports intermittent gastrointestinal symptoms.
+242|2022-10-11|HbA1c previously elevated per chart review.
+242|2022-10-25|History of type 2 diabetes mellitus.
+242|2022-10-30|Follow-up visit after GLP-1 initiation.
+243|2022-11-13|Semaglutide initiated at prior visit.
+244|2022-10-06|History of type 2 diabetes mellitus. Patient tolerating medication without issues.
+244|2022-11-04|Follow-up visit after GLP-1 initiation. Started GLP-1 therapy for weight management.
+245|2022-10-10|Patient tolerating medication without issues. Denies nausea, vomiting, or abdominal pain.
+245|2022-11-05|Lifestyle modification counseling provided. No gastrointestinal adverse effects reported.
+245|2022-11-22|History of type 2 diabetes mellitus. Patient tolerating medication without issues.
+246|2022-10-18|Denies nausea, vomiting, or abdominal pain.
+246|2022-11-06|Patient tolerating medication without issues. History of type 2 diabetes mellitus.
+246|2022-11-23|No prior diagnosis of diabetes noted.
+247|2022-10-05|History of type 2 diabetes mellitus. Follow-up visit after GLP-1 initiation.
+247|2022-10-24|Denies nausea, vomiting, or abdominal pain. Patient tolerating medication without issues.
+247|2022-11-04|GLP-1 therapy discussed during visit. Lifestyle modification counseling provided.
+248|2022-10-19|No prior diagnosis of diabetes noted.
+248|2022-10-29|No prior diagnosis of diabetes noted.
+249|2022-10-27|Reports intermittent gastrointestinal symptoms.
+249|2022-11-04|Follow-up visit after GLP-1 initiation. HbA1c previously elevated per chart review.
+249|2022-11-05|No gastrointestinal adverse effects reported.
+250|2022-11-02|GLP-1 therapy discussed during visit. Discontinued GLP-1 due to GI intolerance.
+250|2022-11-26|Patient tolerating medication without issues.
+250|2022-11-28|Follow-up visit after GLP-1 initiation. Reports mild nausea following injections.
+251|2022-11-22|No prior diagnosis of diabetes noted. Started GLP-1 therapy for weight management.
+252|2022-11-14|Patient tolerating medication without issues.
+253|2022-10-16|No prior diagnosis of diabetes noted.
+253|2022-10-23|Denies nausea, vomiting, or abdominal pain.
+253|2022-11-29|No gastrointestinal adverse effects reported. GLP-1 therapy discussed during visit.
+254|2022-10-26|Follow-up visit after GLP-1 initiation. HbA1c previously elevated per chart review.
+255|2022-10-02|No prior diagnosis of diabetes noted.
+255|2022-11-11|Follow-up visit after GLP-1 initiation.
+256|2022-10-15|Patient tolerating medication without issues. Denies nausea, vomiting, or abdominal pain.
+256|2022-11-15|Discontinued GLP-1 due to GI intolerance.
+257|2022-10-08|Reports mild nausea following injections.
+257|2022-10-19|No prior diagnosis of diabetes noted.
+257|2022-11-01|Started GLP-1 therapy for weight management. Reports intermittent gastrointestinal symptoms.
+258|2022-10-05|Started GLP-1 therapy for weight management.
+259|2022-10-02|Started GLP-1 therapy for weight management.
+259|2022-10-12|No prior diagnosis of diabetes noted. Follow-up visit after GLP-1 initiation.
+259|2022-11-19|Discontinued GLP-1 due to GI intolerance. GLP-1 therapy discussed during visit.
+260|2022-10-05|Patient reports increased appetite and recent weight gain.
+261|2022-10-02|Patient tolerating medication without issues.
+261|2022-10-09|Denies nausea, vomiting, or abdominal pain.
+261|2022-11-29|Semaglutide initiated at prior visit. Denies nausea, vomiting, or abdominal pain.
+262|2022-10-05|GLP-1 therapy discussed during visit. No gastrointestinal adverse effects reported.
+263|2022-10-14|Follow-up visit after GLP-1 initiation.
+263|2022-11-05|GLP-1 therapy discussed during visit.
+263|2022-11-09|No prior diagnosis of diabetes noted. Follow-up visit after GLP-1 initiation.
+264|2022-11-04|Follow-up visit after GLP-1 initiation.
+264|2022-11-16|Patient reports increased appetite and recent weight gain. Discontinued GLP-1 due to GI intolerance.
+264|2022-11-24|No gastrointestinal adverse effects reported. Discontinued GLP-1 due to GI intolerance.
+265|2022-10-04|Lifestyle modification counseling provided.
+265|2022-10-31|Discontinued GLP-1 due to GI intolerance. Reports mild nausea following injections.
+265|2022-11-20|HbA1c previously elevated per chart review.
+266|2022-10-30|History of type 2 diabetes mellitus. Discontinued GLP-1 due to GI intolerance.
+267|2022-10-11|Reports mild nausea following injections. HbA1c previously elevated per chart review.
+268|2022-10-25|Discontinued GLP-1 due to GI intolerance.
+268|2022-11-09|Lifestyle modification counseling provided.
+269|2022-11-01|No prior diagnosis of diabetes noted. Discontinued GLP-1 due to GI intolerance.
+269|2022-11-07|History of type 2 diabetes mellitus. Lifestyle modification counseling provided.
+270|2022-10-11|Denies nausea, vomiting, or abdominal pain. Patient reports increased appetite and recent weight gain.
+270|2022-10-17|HbA1c previously elevated per chart review. Follow-up visit after GLP-1 initiation.
+271|2022-10-15|No prior diagnosis of diabetes noted.
+271|2022-10-23|Semaglutide initiated at prior visit. Reports intermittent gastrointestinal symptoms.
+271|2022-11-24|Patient tolerating medication without issues.
+272|2022-10-15|Reports mild nausea following injections. History of type 2 diabetes mellitus.
+272|2022-10-28|Reports mild nausea following injections.
+272|2022-11-25|Reports intermittent gastrointestinal symptoms. No prior diagnosis of diabetes noted.
+273|2022-11-22|Discontinued GLP-1 due to GI intolerance. Follow-up visit after GLP-1 initiation.
+273|2022-11-23|Reports intermittent gastrointestinal symptoms. Denies nausea, vomiting, or abdominal pain.
+274|2022-10-29|No gastrointestinal adverse effects reported. Reports intermittent gastrointestinal symptoms.
+275|2022-10-01|History of type 2 diabetes mellitus.
+275|2022-11-06|No gastrointestinal adverse effects reported. Lifestyle modification counseling provided.
+276|2022-10-03|No prior diagnosis of diabetes noted. No gastrointestinal adverse effects reported.
+276|2022-10-31|Reports intermittent gastrointestinal symptoms.
+276|2022-11-23|Denies nausea, vomiting, or abdominal pain. HbA1c previously elevated per chart review.
+277|2022-11-02|HbA1c previously elevated per chart review. Lifestyle modification counseling provided.
+278|2022-10-14|Follow-up visit after GLP-1 initiation.
+278|2022-10-19|No prior diagnosis of diabetes noted. No gastrointestinal adverse effects reported.
+278|2022-11-20|No gastrointestinal adverse effects reported.
+279|2022-10-06|Started GLP-1 therapy for weight management. Denies nausea, vomiting, or abdominal pain.
+279|2022-10-24|Patient reports increased appetite and recent weight gain.
+279|2022-10-28|GLP-1 therapy discussed during visit. Patient reports increased appetite and recent weight gain.
+280|2022-10-09|GLP-1 therapy discussed during visit. No gastrointestinal adverse effects reported.
+280|2022-10-16|Semaglutide initiated at prior visit. Follow-up visit after GLP-1 initiation.
+281|2022-10-07|Reports mild nausea following injections. Patient reports increased appetite and recent weight gain.
+281|2022-10-23|Reports mild nausea following injections. Patient tolerating medication without issues.
+282|2022-10-10|Reports mild nausea following injections.
+283|2022-10-07|Patient reports increased appetite and recent weight gain. Denies nausea, vomiting, or abdominal pain.
+283|2022-10-08|GLP-1 therapy discussed during visit. Started GLP-1 therapy for weight management.
+283|2022-10-18|Reports mild nausea following injections. History of type 2 diabetes mellitus.
+284|2022-10-07|Reports intermittent gastrointestinal symptoms. Started GLP-1 therapy for weight management.
+284|2022-11-01|History of type 2 diabetes mellitus. Started GLP-1 therapy for weight management.
+284|2022-11-26|Discontinued GLP-1 due to GI intolerance.
+285|2022-10-15|Semaglutide initiated at prior visit.
+286|2022-10-01|Denies nausea, vomiting, or abdominal pain. Follow-up visit after GLP-1 initiation.
+287|2022-10-20|HbA1c previously elevated per chart review. Lifestyle modification counseling provided.
+287|2022-11-17|Reports intermittent gastrointestinal symptoms.
+288|2022-10-28|Semaglutide initiated at prior visit.
+288|2022-11-24|Follow-up visit after GLP-1 initiation. Patient tolerating medication without issues.
+289|2022-11-05|Follow-up visit after GLP-1 initiation. Patient reports increased appetite and recent weight gain.
+289|2022-11-26|History of type 2 diabetes mellitus.
+290|2022-10-10|Started GLP-1 therapy for weight management.
+290|2022-11-08|Follow-up visit after GLP-1 initiation. Patient tolerating medication without issues.
+290|2022-11-10|Denies nausea, vomiting, or abdominal pain.
+291|2022-10-24|No gastrointestinal adverse effects reported.
+291|2022-10-26|Follow-up visit after GLP-1 initiation.
+291|2022-10-28|Denies nausea, vomiting, or abdominal pain. Follow-up visit after GLP-1 initiation.
+292|2022-11-19|GLP-1 therapy discussed during visit.
+292|2022-11-25|Patient reports increased appetite and recent weight gain.
+293|2022-11-09|No gastrointestinal adverse effects reported. Patient tolerating medication without issues.
+294|2022-10-26|Lifestyle modification counseling provided.
+295|2022-11-22|Reports mild nausea following injections. Denies nausea, vomiting, or abdominal pain.
+296|2022-11-15|No gastrointestinal adverse effects reported. Lifestyle modification counseling provided.
+297|2022-10-30|Started GLP-1 therapy for weight management.
+298|2022-10-09|Lifestyle modification counseling provided.
+298|2022-10-27|Patient tolerating medication without issues.
+299|2022-10-02|Denies nausea, vomiting, or abdominal pain.
+299|2022-11-18|History of type 2 diabetes mellitus.
+300|2022-10-12|Discontinued GLP-1 due to GI intolerance.
+300|2022-10-15|History of type 2 diabetes mellitus.
+301|2022-10-12|No prior diagnosis of diabetes noted. Reports mild nausea following injections.
+301|2022-11-20|Lifestyle modification counseling provided.
+302|2022-10-14|Started GLP-1 therapy for weight management.
+302|2022-11-05|Reports mild nausea following injections.
+302|2022-11-13|Semaglutide initiated at prior visit. History of type 2 diabetes mellitus.
+303|2022-10-01|Follow-up visit after GLP-1 initiation.
+303|2022-11-03|HbA1c previously elevated per chart review. GLP-1 therapy discussed during visit.
+303|2022-11-08|HbA1c previously elevated per chart review.
+304|2022-10-10|History of type 2 diabetes mellitus.
+305|2022-11-12|Denies nausea, vomiting, or abdominal pain. Patient tolerating medication without issues.
+306|2022-10-08|Semaglutide initiated at prior visit. Discontinued GLP-1 due to GI intolerance.
+307|2022-11-02|Follow-up visit after GLP-1 initiation.
+308|2022-10-01|Semaglutide initiated at prior visit. Denies nausea, vomiting, or abdominal pain.
+309|2022-10-14|GLP-1 therapy discussed during visit. Patient tolerating medication without issues.
+309|2022-10-22|Started GLP-1 therapy for weight management.
+310|2022-11-04|Follow-up visit after GLP-1 initiation. GLP-1 therapy discussed during visit.
+310|2022-11-05|Patient tolerating medication without issues.
+310|2022-11-24|Denies nausea, vomiting, or abdominal pain. Started GLP-1 therapy for weight management.
+311|2022-10-31|History of type 2 diabetes mellitus. Reports mild nausea following injections.
+312|2022-11-26|HbA1c previously elevated per chart review. No prior diagnosis of diabetes noted.
+313|2022-10-13|No gastrointestinal adverse effects reported.
+313|2022-11-18|Reports mild nausea following injections.
+313|2022-11-28|Started GLP-1 therapy for weight management.
+314|2022-10-17|Semaglutide initiated at prior visit. GLP-1 therapy discussed during visit.
+314|2022-11-11|Patient reports increased appetite and recent weight gain.
+314|2022-11-13|GLP-1 therapy discussed during visit. History of type 2 diabetes mellitus.
+315|2022-10-12|Patient reports increased appetite and recent weight gain. Reports intermittent gastrointestinal symptoms.
+315|2022-11-26|Denies nausea, vomiting, or abdominal pain.
+316|2022-11-16|Reports intermittent gastrointestinal symptoms.
+317|2022-11-07|Semaglutide initiated at prior visit.
+317|2022-11-24|HbA1c previously elevated per chart review.
+318|2022-10-25|GLP-1 therapy discussed during visit. Started GLP-1 therapy for weight management.
+318|2022-10-26|Patient tolerating medication without issues.
+319|2022-11-04|Reports mild nausea following injections.
+320|2022-10-15|Patient reports increased appetite and recent weight gain. Patient tolerating medication without issues.
+320|2022-10-28|Reports intermittent gastrointestinal symptoms. Discontinued GLP-1 due to GI intolerance.
+320|2022-11-07|No gastrointestinal adverse effects reported.
