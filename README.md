@@ -27,4 +27,3 @@ This repository contains a collection of applied health data science projects fo
 
 ---
 
-For more recent generalist and product-focused data science projects, see my pinned repositories.
