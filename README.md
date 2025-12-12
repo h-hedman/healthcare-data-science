@@ -2,7 +2,7 @@
 
 This repository contains a collection of applied health data science projects focused on public health outcomes, surveillance systems, and intervention modeling. Each folder represents a standalone project with its own documentation. Collectively, these projects demonstrate real-world experience in epidemiology, health analytics, and decision support systems developed across academic, public health, and research settings.
 
-## Project Overviews
+## Summary of Projects
 
 - **`sql-cms-medicare/`**  
   Descriptive SQL analyses of CMS Medicare data focused on chronic condition prevalence and healthcare utilization.
