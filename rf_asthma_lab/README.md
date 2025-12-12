@@ -1,4 +1,4 @@
-# Asthma Risk Prediction: Occupational Exposure to ChemicalS (In Review)
+# Asthma Risk Prediction: Occupational Exposure to Chemicals (In Review)
 
 **Preprint available on medRxiv**: https://www.medrxiv.org/content/10.1101/2025.11.25.25341001v1
 
