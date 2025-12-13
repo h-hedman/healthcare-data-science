@@ -11,6 +11,8 @@ from pathlib import Path
 import json
 import numpy as np
 import pandas as pd
+import shap
+import os
 from typing import Dict, Any, Tuple, List
 import warnings
 warnings.filterwarnings('ignore')
@@ -269,7 +271,7 @@ def generate_dataset_report(df: pd.DataFrame, target: str, tab_dir: Path):
                         for c in target_corr.values]
         }).sort_values('Abs_Correlation', ascending=False)
         
-        target_corr_df.to_csv(tab_dir / "dataset_target_correlations.csv", index=False)
+        target_corr_df.to_csv(tab_dir / "target_correlations.csv", index=False)
         print("\nFeature Correlations with Target (Top 10):")
         print(target_corr_df.head(10).to_string(index=False))
         print()
@@ -303,7 +305,228 @@ def generate_dataset_report(df: pd.DataFrame, target: str, tab_dir: Path):
     print(f"  - dataset_target_correlations.csv")
     print(f"  - dataset_summary_statistics.csv")
     print(f"{'='*80}\n")
+# =========================================================================================================
+##Class Imbalance Handling
+from imblearn.over_sampling import RandomOverSampler, BorderlineSMOTE
 
+def handle_imbalance(X_train, y_train, smote_ratio, method="SMOTE"):
+    if method == "SMOTE":
+        smote = SMOTE(sampling_strategy=smote_ratio, random_state=DEFAULT_SEED)
+    elif method == "RandomOverSampling":
+        smote = RandomOverSampler(sampling_strategy=smote_ratio, random_state=DEFAULT_SEED)
+    elif method == "BorderlineSMOTE":
+        smote = BorderlineSMOTE(sampling_strategy=smote_ratio, random_state=DEFAULT_SEED)
+    else:
+        raise ValueError(f"Unknown method: {method}")
+    
+    X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
+    return X_resampled, y_resampled
+
+# Modify perform_cross_validation to handle imbalance methods
+def perform_cross_validation(
+    model,
+    X,
+    y,
+    preproc,
+    cv_folds=5,
+    smote_ratio=0.7,
+    model_name="Model",
+    seed=DEFAULT_SEED
+):
+    """
+    Standard k-fold cross-validation used for primary results.
+    Does NOT perform imbalance sensitivity analysis.
+    """
+
+    print(f"\n  Performing {cv_folds}-fold cross-validation...")
+
+    skf = StratifiedKFold(
+        n_splits=cv_folds,
+        shuffle=True,
+        random_state=seed
+    )
+
+    cv_scores = {
+        "accuracy": [],
+        "precision": [],
+        "recall": [],
+        "f1": [],
+        "roc_auc": [],
+        "pr_auc": []
+    }
+
+    for fold, (train_idx, val_idx) in enumerate(skf.split(X, y), 1):
+        X_fold_train = X.iloc[train_idx]
+        y_fold_train = y.iloc[train_idx]
+        X_fold_val = X.iloc[val_idx]
+        y_fold_val = y.iloc[val_idx]
+
+        # Preprocess
+        X_fold_train_enc = preproc.fit_transform(X_fold_train)
+        X_fold_val_enc = preproc.transform(X_fold_val)
+
+        # Apply SMOTE for non-XGBoost models
+        if model_name != "XGBoost":
+            smote = SMOTE(
+                sampling_strategy=smote_ratio,
+                random_state=seed
+            )
+            X_fold_train_enc, y_fold_train = smote.fit_resample(
+                X_fold_train_enc,
+                y_fold_train
+            )
+
+        # Fit model
+        model.fit(X_fold_train_enc, y_fold_train)
+
+        # Predict
+        y_pred = model.predict(X_fold_val_enc)
+        y_score = model.predict_proba(X_fold_val_enc)[:, 1]
+
+        # Metrics
+        cv_scores["accuracy"].append(
+            accuracy_score(y_fold_val, y_pred)
+        )
+        cv_scores["precision"].append(
+            precision_score(y_fold_val, y_pred, zero_division=0)
+        )
+        cv_scores["recall"].append(
+            recall_score(y_fold_val, y_pred, zero_division=0)
+        )
+        cv_scores["f1"].append(
+            f1_score(y_fold_val, y_pred, zero_division=0)
+        )
+        cv_scores["roc_auc"].append(
+            roc_auc_score(y_fold_val, y_score)
+        )
+        cv_scores["pr_auc"].append(
+            average_precision_score(y_fold_val, y_score)
+        )
+
+    # Aggregate statistics
+    cv_stats = {}
+    for metric, values in cv_scores.items():
+        cv_stats[f"{metric}_mean"] = float(np.mean(values))
+        cv_stats[f"{metric}_std"] = float(np.std(values))
+        cv_stats[f"{metric}_min"] = float(np.min(values))
+        cv_stats[f"{metric}_max"] = float(np.max(values))
+        cv_stats[f"{metric}_cv"] = (
+            float(np.std(values) / np.mean(values))
+            if np.mean(values) > 0 else 0.0
+        )
+
+    print(
+        f"  CV Summary — ROC-AUC: "
+        f"{cv_stats['roc_auc_mean']:.3f} ± {cv_stats['roc_auc_std']:.3f}, "
+        f"Recall: {cv_stats['recall_mean']:.3f}"
+    )
+
+    return cv_stats
+
+# =========================================================================================================
+from imblearn.over_sampling import SMOTE, BorderlineSMOTE, RandomOverSampler
+
+def run_imbalance_robustness_check(
+    model,
+    X_train,
+    y_train,
+    X_test,
+    y_test,
+    preproc,
+    seed,
+    smote_ratio=0.7
+):
+    """
+    Supplementary-only robustness check for class imbalance.
+    This does NOT affect primary results.
+    Produces one clean table for reviewer appeasement.
+    """
+
+    methods = {
+        "ClassWeight_Only": None,
+        "SMOTE": SMOTE(sampling_strategy=smote_ratio, random_state=seed),
+        "BorderlineSMOTE": BorderlineSMOTE(sampling_strategy=smote_ratio, random_state=seed),
+        "RandomOverSampler": RandomOverSampler(sampling_strategy=smote_ratio, random_state=seed),
+    }
+
+    rows = []
+
+    for method_name, sampler in methods.items():
+        # Preprocess
+        Xtr = preproc.fit_transform(X_train)
+        Xte = preproc.transform(X_test)
+        ytr = y_train.values if hasattr(y_train, "values") else y_train
+
+        # Apply resampling if applicable
+        if sampler is not None:
+            Xtr, ytr = sampler.fit_resample(Xtr, ytr)
+
+        # Fit model
+        model.fit(Xtr, ytr)
+
+        # Predict
+        probs = model.predict_proba(Xte)[:, 1]
+        preds = (probs >= 0.5).astype(int)
+
+        # Collect key metrics only (keep this simple)
+        rows.append({
+            "method": method_name,
+            "roc_auc": roc_auc_score(y_test, probs),
+            "pr_auc": average_precision_score(y_test, probs),
+            "recall": recall_score(y_test, preds, zero_division=0),
+            "precision": precision_score(y_test, preds, zero_division=0),
+            "f1": f1_score(y_test, preds, zero_division=0),
+        })
+
+    return pd.DataFrame(rows)
+# =========================================================================================================
+# SHAP function
+def run_shap_analysis(model, X_train, preproc):
+    """
+    Supplementary SHAP feature importance analysis.
+    Produces a single global importance table.
+    """
+
+    # Preprocess data
+    X_train_enc = preproc.fit_transform(X_train)
+
+    # SHAP explainer
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(X_train_enc)
+
+    # ---- Handle binary classification + dimensionality ----
+    # Case 1: list output (common)
+    if isinstance(shap_values, list):
+        shap_values = shap_values[1]  # positive class
+
+    # Case 2: 3D array (n_samples, n_features, n_classes)
+    if shap_values.ndim == 3:
+        shap_values = shap_values[:, :, 1]  # positive class
+
+    # Now guaranteed: (n_samples, n_features)
+    shap_importance = np.abs(shap_values).mean(axis=0)
+
+    # Feature names from preprocessor
+    feature_names = preproc.get_feature_names_out()
+
+    # Safety check (prevents silent mismatch)
+    if shap_importance.shape[0] != len(feature_names):
+        raise ValueError(
+            f"SHAP importance length ({shap_importance.shape[0]}) "
+            f"does not match number of features ({len(feature_names)})"
+        )
+
+    # Output table
+    importance_df = (
+        pd.DataFrame({
+            "Feature": feature_names,
+            "SHAP_Importance": shap_importance
+        })
+        .sort_values("SHAP_Importance", ascending=False)
+        .reset_index(drop=True)
+    )
+
+    return importance_df
 # =========================================================================================================
 # Feature engineering
 def engineer_features(df: pd.DataFrame) -> pd.DataFrame:
@@ -435,19 +658,19 @@ def calculate_comprehensive_metrics(y_true, y_pred, y_score, threshold=None):
     - Threshold-dependent metrics
     """
     metrics = {}
-    
+
     # Confusion matrix components
     tn = int(((y_true == 0) & (y_pred == 0)).sum())
     fp = int(((y_true == 0) & (y_pred == 1)).sum())
     fn = int(((y_true == 1) & (y_pred == 0)).sum())
     tp = int(((y_true == 1) & (y_pred == 1)).sum())
-    
+
     metrics['tn'] = tn
     metrics['fp'] = fp
     metrics['fn'] = fn
     metrics['tp'] = tp
     metrics['total'] = len(y_true)
-    
+
     # ===== BASIC CLASSIFICATION METRICS =====
     metrics['accuracy'] = accuracy_score(y_true, y_pred)
     metrics['balanced_accuracy'] = balanced_accuracy_score(y_true, y_pred)
@@ -456,39 +679,39 @@ def calculate_comprehensive_metrics(y_true, y_pred, y_score, threshold=None):
     metrics['f1_score'] = f1_score(y_true, y_pred, zero_division=0)
     metrics['f2_score'] = fbeta_score(y_true, y_pred, beta=2, zero_division=0)  # Emphasizes recall
     metrics['f05_score'] = fbeta_score(y_true, y_pred, beta=0.5, zero_division=0)  # Emphasizes precision
-    
+
     # ===== CLINICAL METRICS =====
     metrics['sensitivity'] = tp / (tp + fn) if (tp + fn) > 0 else 0  # Same as recall
     metrics['specificity'] = tn / (tn + fp) if (tn + fp) > 0 else 0
     metrics['ppv'] = tp / (tp + fp) if (tp + fp) > 0 else 0  # Positive Predictive Value (same as precision)
     metrics['npv'] = tn / (tn + fn) if (tn + fn) > 0 else 0  # Negative Predictive Value
-    
+
     # Likelihood ratios
     metrics['lr_positive'] = (metrics['sensitivity'] / (1 - metrics['specificity'])) if metrics['specificity'] < 1 else np.inf
     metrics['lr_negative'] = ((1 - metrics['sensitivity']) / metrics['specificity']) if metrics['specificity'] > 0 else np.inf
-    
+
     # Diagnostic odds ratio
     if metrics['lr_positive'] != np.inf and metrics['lr_negative'] != 0:
         metrics['diagnostic_odds_ratio'] = metrics['lr_positive'] / metrics['lr_negative']
     else:
         metrics['diagnostic_odds_ratio'] = np.inf
-    
+
     # Youden's J statistic (informedness)
     metrics['youdens_j'] = metrics['sensitivity'] + metrics['specificity'] - 1
-    
+
     # Markedness
     metrics['markedness'] = metrics['ppv'] + metrics['npv'] - 1
-    
+
     # ===== AGREEMENT METRICS =====
     metrics['matthews_corrcoef'] = matthews_corrcoef(y_true, y_pred)
     metrics['cohens_kappa'] = cohen_kappa_score(y_true, y_pred)
-    
+
     # ===== PROBABILITY-BASED METRICS =====
     metrics['roc_auc'] = roc_auc_score(y_true, y_score)
     metrics['pr_auc'] = average_precision_score(y_true, y_score)
     metrics['brier_score'] = brier_score_loss(y_true, y_score)
     metrics['log_loss'] = log_loss(y_true, y_score)
-    
+
     # ===== PREVALENCE AND RATES =====
     metrics['prevalence'] = (tp + fn) / (tp + tn + fp + fn)
     metrics['true_positive_rate'] = metrics['sensitivity']
@@ -497,41 +720,40 @@ def calculate_comprehensive_metrics(y_true, y_pred, y_score, threshold=None):
     metrics['false_negative_rate'] = fn / (fn + tp) if (fn + tp) > 0 else 0
     metrics['false_discovery_rate'] = fp / (fp + tp) if (fp + tp) > 0 else 0
     metrics['false_omission_rate'] = fn / (fn + tn) if (fn + tn) > 0 else 0
-    
+
     # ===== THRESHOLD =====
     if threshold is not None:
         metrics['threshold'] = threshold
-    
+
     # ===== GEOMETRIC MEAN =====
     metrics['geometric_mean'] = np.sqrt(metrics['sensitivity'] * metrics['specificity'])
-    
-    return metrics
 
+    return metrics
+# --------------------------------------------------------------------------------------
 def tune_threshold_recall_constrained(y_true, y_score, min_recall=0.70, grid=500):
     """Find threshold that maximizes F1 while maintaining minimum recall."""
     thr_vals = np.linspace(0.01, 0.99, grid)
     best_thr, best_f1 = 0.5, -1
-    
+
     for t in thr_vals:
         y_hat = (y_score >= t).astype(int)
         rec = recall_score(y_true, y_hat, zero_division=0)
-        
+
         if rec >= min_recall:
             f = f1_score(y_true, y_hat, zero_division=0)
             if f > best_f1:
                 best_thr, best_f1 = t, f
-    
+
     if best_f1 == -1:
-        print(f"  ⚠️  Warning: Could not achieve {min_recall:.1%} recall. Using best available.")
+        print(f"  Warning: Could not achieve {min_recall:.1%} recall. Using best available.")
         best_recall = 0
         for t in thr_vals:
             y_hat = (y_score >= t).astype(int)
             rec = recall_score(y_true, y_hat, zero_division=0)
             if rec > best_recall:
                 best_thr, best_recall = t, rec
-    
-    return float(best_thr)
 
+    return float(best_thr)
 # =========================================================================================================
 # CROSS-VALIDATION ANALYSIS
 def perform_cross_validation(model, X, y, preproc, cv_folds=5, smote_ratio=0.7, 
@@ -637,38 +859,135 @@ def plot_calibration_curve(y_true, y_score, model_name, fig_dir):
 
 # =========================================================================================================
 # THRESHOLD ANALYSIS
-def analyze_threshold_tradeoffs(y_true, y_score, tab_dir, model_name):
+# =========================================================================================================
+# THRESHOLD ANALYSIS (DEPLOYMENT-AWARE)
+def analyze_threshold_tradeoffs(
+    y_true: np.ndarray,
+    y_score: np.ndarray,
+    tab_dir: Path,
+    model_name: str,
+    thresholds: np.ndarray | None = None,
+    per_n: int = 1000
+) -> pd.DataFrame:
     """
-    Comprehensive threshold analysis showing trade-offs between metrics
+    Deployment-aware threshold analysis emphasizing false-positive burden.
+    Produces a single canonical table for publication and public release.
     """
-    thresholds = np.linspace(0.1, 0.9, 81)
-    
-    threshold_results = []
+
+    if thresholds is None:
+        # Conservative range appropriate for rare outcomes
+        thresholds = np.linspace(0.05, 0.80, 76)
+
+    rows = []
+    n = len(y_true)
+    pos = int(np.sum(y_true == 1))
+    neg = int(np.sum(y_true == 0))
+    prevalence = pos / n if n > 0 else 0.0
+
     for thr in thresholds:
         y_pred = (y_score >= thr).astype(int)
-        
-        metrics = calculate_comprehensive_metrics(y_true, y_pred, y_score, threshold=thr)
-        
-        threshold_results.append({
-            'threshold': thr,
-            'accuracy': metrics['accuracy'],
-            'precision': metrics['precision'],
-            'recall': metrics['recall'],
-            'specificity': metrics['specificity'],
-            'f1_score': metrics['f1_score'],
-            'f2_score': metrics['f2_score'],
-            'youdens_j': metrics['youdens_j'],
-            'tp': metrics['tp'],
-            'fp': metrics['fp'],
-            'tn': metrics['tn'],
-            'fn': metrics['fn']
+        m = calculate_comprehensive_metrics(y_true, y_pred, y_score, threshold=thr)
+
+        alerts = int(np.sum(y_pred == 1))
+        fp = int(m["fp"])
+        tp = int(m["tp"])
+        fn = int(m["fn"])
+        tn = int(m["tn"])
+
+        # Ensure 'recall' column is populated correctly here
+        rows.append({
+            "model": model_name,
+            "threshold": float(thr),
+
+            # Population context
+            "prevalence": prevalence,
+
+            # Core operating characteristics
+            "precision_ppv": float(m["precision"]),
+            "recall": float(m["recall"]),  # Correct name for recall column
+            "specificity": float(m["specificity"]),
+            "f1_score": float(m["f1_score"]),
+            "f2_score": float(m["f2_score"]),
+            "youdens_j": float(m["youdens_j"]),
+
+            # Workload / burden framing
+            f"alerts_per_{per_n}": alerts / n * per_n if n > 0 else 0.0,
+            f"false_positives_per_{per_n}": fp / n * per_n if n > 0 else 0.0,
+            f"true_positives_per_{per_n}": tp / n * per_n if n > 0 else 0.0,
+
+            # Confusion matrix (absolute)
+            "tp": tp,
+            "fp": fp,
+            "tn": tn,
+            "fn": fn
         })
-    
-    threshold_df = pd.DataFrame(threshold_results)
-    threshold_df.to_csv(tab_dir / f"{model_name}_threshold_analysis.csv", index=False)
-    
+
+    threshold_df = pd.DataFrame(rows)
+    threshold_df.to_csv(
+        tab_dir / f"{model_name}_threshold_operating_points.csv",
+        index=False
+    )
+
+    # Debugging line to ensure recall is present
+    print(threshold_df.columns)  # Ensure the 'recall' column is present here
+
     return threshold_df
 
+
+# =========================================================================================================
+def export_rf_fp_recall_outputs(
+    threshold_df,
+    output_dir,
+    model_name,
+    recall_targets=(0.95, 0.85, 0.75, 0.65, 0.55, 0.40, 0.25)
+):
+    # ---- ensure expected columns exist ----
+    required_cols = {"recall", "false_positives_per_1000"}
+    missing = required_cols - set(threshold_df.columns)
+    if missing:
+        raise ValueError(f"Missing columns in threshold_df: {missing}")
+
+    # ---- plot: FP vs Recall (SM) ----
+    plt.figure(figsize=(5, 4))
+    plt.plot(
+        threshold_df["recall"],
+        threshold_df["false_positives_per_1000"],
+        linewidth=1
+    )
+    plt.xlabel("Recall (Sensitivity)")
+    plt.ylabel("False Positives per 1,000 Workers")
+    plt.tight_layout()
+
+    # Ensure the output directory exists
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # Save the figure
+    fig_path = os.path.join(output_dir, f"{model_name}_FP_vs_Recall_SM.png")
+    try:
+        plt.savefig(fig_path, dpi=300, bbox_inches='tight')
+        print(f"Figure saved at: {fig_path}")
+    except Exception as e:
+        print(f"Error saving figure: {e}")
+    plt.close()
+
+    # ---- representative operating points ----
+    rows = []
+    for r in recall_targets:
+        idx = (threshold_df["recall"] - r).abs().idxmin()
+        rows.append(threshold_df.loc[idx])
+
+    rep_df = pd.DataFrame(rows).drop_duplicates()
+
+    # Save the representative operating points to CSV
+    rep_path = os.path.join(output_dir, f"{model_name}_Representative_Operating_Points.csv")
+    try:
+        rep_df.to_csv(rep_path, index=False)
+        print(f"CSV saved at: {rep_path}")
+    except Exception as e:
+        print(f"Error saving CSV: {e}")
+
+    return rep_df
 # =========================================================================================================
 # Plotting functions (keeping your publication-quality versions)
 def plot_conf_grid(all_cms, model_names, fig_dir):
@@ -944,11 +1263,23 @@ def fit_and_eval(name, model, preproc, X_train, y_train, X_valid, y_valid,
     cv_df = pd.DataFrame([cv_stats])
     cv_df.insert(0, 'model', name)
     cv_df.to_csv(tab_dir / f"{name}_cross_validation.csv", index=False)
-    
+    # ---------------------------------------------------------------------------------------
     # ===== THRESHOLD ANALYSIS =====
     print(f"  Performing threshold analysis...")
-    threshold_df = analyze_threshold_tradeoffs(y_test, proba_test, tab_dir, name)
-    
+    threshold_df = analyze_threshold_tradeoffs(
+        y_true=y_test, 
+        y_score=proba_test, 
+        tab_dir=tab_dir, 
+        model_name=name
+    )
+
+    # Ensure the additional outputs (plot + CSV) are created
+    export_rf_fp_recall_outputs(
+        threshold_df=threshold_df,
+        output_dir=tab_dir,
+        model_name=name
+    ) 
+    # ---------------------------------------------------------------------------------------
     # ===== CALIBRATION ANALYSIS =====
     print(f"  Analyzing probability calibration...")
     calib_error = plot_calibration_curve(y_test, proba_test, name, fig_dir)
@@ -1205,18 +1536,49 @@ def main():
     model_names = []
     all_cv_stats = []
     
+    
+    # -------------------------------------------------------------
     for model_name, model in models.items():
+        # Train and evaluate the model
         name, proba, metrics, cm, cv_stats = fit_and_eval(
             model_name, model, preproc, 
             X_train, y_train, X_valid, y_valid, X_test, y_test,
             fig_dir, tab_dir, args.smote_ratio, args.min_recall, args.seed
         )
+        
+        # Collect results for metrics and confusion matrices
         results.append((name, proba))
         all_metrics.append(metrics)
         all_cms.append(cm)
         model_names.append(name)
         all_cv_stats.append(cv_stats)
-    
+
+        
+        # ---------------------------------------------
+        # Supplementary: class imbalance robustness (NOT part of main experiment)
+        imbalance_df = run_imbalance_robustness_check(
+            model=model,
+            X_train=X_train,
+            y_train=y_train,
+            X_test=X_test,
+            y_test=y_test,
+            preproc=preproc,
+            seed=args.seed,
+            smote_ratio=args.smote_ratio
+        )
+
+        imbalance_df.to_csv(
+            tab_dir / f"{model_name}_imbalance_robustness.csv",
+            index=False
+        )
+        # ---------------------------------------------
+
+        # SHAP Feature Importance Analysis
+        shap_importance_df = run_shap_analysis(model, X_train, preproc)
+        shap_importance_df.to_csv(tab_dir / f"{model_name}_shap_importance.csv", index=False)
+
+
+    # -------------------------------------------------------------
     # ===== COMPARISON VISUALIZATIONS =====
     print(f"\n{'='*80}")
     print("PHASE 6: GENERATING COMPARISON VISUALIZATIONS")
