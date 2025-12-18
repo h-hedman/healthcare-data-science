@@ -11,7 +11,7 @@ This repository contains the simulation code used to evaluate reinforcement lear
 
 ---
 
-## Repository Contents
+## Project Contents (src)
 
 All scripts are located in the repository root for transparency and reproducibility.
 
