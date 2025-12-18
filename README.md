@@ -10,6 +10,9 @@ Collectively, these projects demonstrate experience working with real-world heal
 
 ### Core Projects
 
+- **`organic-amr-rl/`**  
+  Reinforcement learning–based simulation framework for exploring antimicrobial resistance dynamics under organic compound exposure, generating experimental results, figures, and tables for a microbiology methods study.
+
 - **`glp1-nlp-demo/`**  
   End-to-end NLP pipeline for abstracting structured labels from unstructured clinical notes, demonstrated using synthetic GLP-1 medication data.
 
