@@ -820,6 +820,7 @@ def perform_cross_validation(model, X, y, preproc, cv_folds=5, smote_ratio=0.7,
 
 # =========================================================================================================
 # CALIBRATION ANALYSIS
+# =========================================================================================================
 def plot_calibration_curve(y_true, y_score, model_name, fig_dir):
     """
     Plot calibration curve to assess probability calibration
@@ -842,7 +843,7 @@ def plot_calibration_curve(y_true, y_score, model_name, fig_dir):
     ax.set_xlim([0, 1])
     ax.set_ylim([0, 1])
     ax.legend(loc='upper left', fontsize=10, frameon=True, edgecolor='black')
-    ax.grid(alpha=0.3, linestyle='--', linewidth=0.8)
+    # REMOVED GRID
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['left'].set_linewidth(1.5)
@@ -856,7 +857,6 @@ def plot_calibration_curve(y_true, y_score, model_name, fig_dir):
     calib_error = np.mean(np.abs(fraction_of_positives - mean_predicted_value))
     
     return calib_error
-
 # =========================================================================================================
 # THRESHOLD ANALYSIS
 # =========================================================================================================
@@ -1000,26 +1000,37 @@ def plot_conf_grid(all_cms, model_names, fig_dir):
     for idx, (cm, model_name, ax, label) in enumerate(zip(all_cms, model_names, axes, panel_labels)):
         cm_norm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
         
+        # Get the colormap to determine darkness threshold
+        cmap = plt.cm.Blues
+        
         sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=True,
                     square=True, linewidths=1.5, linecolor='gray',
-                    annot_kws={'fontsize': 10, 'fontweight': 'bold'},
+                    annot_kws={'fontsize': 12, 'fontweight': 'bold'},
                     ax=ax, cbar_kws={'shrink': 0.7})
+        
+        # Add percentages with dynamic color based on actual cell values
+        # Normalize cm values to determine color intensity (not cm_norm percentages)
+        cm_color_norm = cm / cm.max()
         
         for i in range(2):
             for j in range(2):
+                # Use white text for cells with high counts (darker), dark text for low counts (lighter)
+                # Threshold at 0.4 works better for Blues colormap
+                text_color = 'white' if cm_color_norm[i, j] > 0.4 else '#202020'
+                
                 ax.text(j+0.5, i+0.75, f'({cm_norm[i,j]:.1%})', 
-                       ha='center', va='center', fontsize=9, 
-                       color='#404040', fontweight='normal')
+                       ha='center', va='center', fontsize=11,
+                       color=text_color, fontweight='normal')
         
         ax.set_xticks([0.5, 1.5])
-        ax.set_xticklabels(["No", "Yes"], fontsize=9, fontweight='bold')
+        ax.set_xticklabels(["No", "Yes"], fontsize=10, fontweight='bold')
         ax.set_yticks([0.5, 1.5])
-        ax.set_yticklabels(["No", "Yes"], fontsize=9, fontweight='bold', rotation=0)
-        ax.set_xlabel("Predicted", fontsize=10, fontweight='bold')
-        ax.set_ylabel("Actual", fontsize=10, fontweight='bold')
-        ax.set_title(f'{label} {model_name}', fontsize=11, fontweight='bold', pad=8)
+        ax.set_yticklabels(["No", "Yes"], fontsize=10, fontweight='bold', rotation=0)
+        ax.set_xlabel("Predicted", fontsize=11, fontweight='bold')
+        ax.set_ylabel("Actual", fontsize=11, fontweight='bold')
+        ax.set_title(f'{label} {model_name}', fontsize=12, fontweight='bold', pad=10)
     
-    plt.tight_layout()
+    plt.tight_layout(pad=1.5)
     plt.savefig(fig_dir / "Figure2_confusion_matrices_grid.png", dpi=300, bbox_inches='tight')
     plt.close()
 
@@ -1031,22 +1042,29 @@ def plot_conf(cm, out, model_name):
     
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=True,
                 square=True, linewidths=1.5, linecolor='gray',
-                annot_kws={'fontsize': 12, 'fontweight': 'bold'})
+                annot_kws={'fontsize': 14, 'fontweight': 'bold'})
     
+    # Normalize cm values to determine color intensity
+    cm_color_norm = cm / cm.max()
+    
+    # Add percentages with dynamic color based on actual cell values
     for i in range(2):
         for j in range(2):
+            # Use white text for cells with high counts (darker), dark text for low counts (lighter)
+            text_color = 'white' if cm_color_norm[i, j] > 0.4 else '#202020'
+            
             plt.text(j+0.5, i+0.75, f'({cm_norm[i,j]:.1%})', 
-                    ha='center', va='center', fontsize=11, 
-                    color='#404040', fontweight='normal')
+                    ha='center', va='center', fontsize=13,
+                    color=text_color, fontweight='normal')
     
-    plt.xticks([0.5, 1.5], ["No", "Yes"], fontsize=11, fontweight='bold')
-    plt.yticks([0.5, 1.5], ["No", "Yes"], fontsize=11, fontweight='bold', rotation=0)
-    plt.xlabel("Predicted", fontsize=12, fontweight='bold')
-    plt.ylabel("Actual", fontsize=12, fontweight='bold')
-    plt.tight_layout()
+    plt.xticks([0.5, 1.5], ["No", "Yes"], fontsize=12, fontweight='bold')
+    plt.yticks([0.5, 1.5], ["No", "Yes"], fontsize=12, fontweight='bold', rotation=0)
+    plt.xlabel("Predicted", fontsize=13, fontweight='bold')
+    plt.ylabel("Actual", fontsize=13, fontweight='bold')
+    plt.tight_layout(pad=1.0)
     plt.savefig(out, dpi=300, bbox_inches='tight')
     plt.close()
-
+# -----------------------------------------------------------------------------------
 def plot_metrics_comparison(all_metrics, tab_dir, fig_dir):
     """Metrics comparison with extended metrics"""
     metrics_df = pd.DataFrame(all_metrics)
@@ -1085,7 +1103,7 @@ def plot_metrics_comparison(all_metrics, tab_dir, fig_dir):
         ax.set_xticks(x_pos)
         ax.set_xticklabels(models, rotation=20, ha='right', fontsize=10)
         ax.set_ylim(0, max(values) * 1.18)
-        ax.grid(axis='y', alpha=0.3, linestyle='--', linewidth=0.8)
+        # REMOVED GRID
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
         ax.spines['left'].set_linewidth(1.5)
@@ -1094,7 +1112,7 @@ def plot_metrics_comparison(all_metrics, tab_dir, fig_dir):
     plt.tight_layout()
     plt.savefig(fig_dir / "Figure6_metrics_comparison.png", dpi=300, bbox_inches='tight')
     plt.close()
-
+# -----------------------------------------------------------------------------------
 def plot_compare_roc_pr(results, y_test, fig_dir):
     """ROC and PR curves"""
     colors = cm.viridis(np.linspace(0.15, 0.85, len(results)))
@@ -1113,7 +1131,7 @@ def plot_compare_roc_pr(results, y_test, fig_dir):
     ax.tick_params(labelsize=11)
     ax.legend(frameon=True, fontsize=10, loc='lower right', framealpha=0.95, 
              edgecolor='black', fancybox=False)
-    ax.grid(alpha=0.3, linestyle='--', linewidth=0.8)
+    # REMOVED GRID
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['left'].set_linewidth(1.5)
@@ -1139,7 +1157,7 @@ def plot_compare_roc_pr(results, y_test, fig_dir):
     ax.tick_params(labelsize=11)
     ax.legend(frameon=True, fontsize=10, loc='best', framealpha=0.95,
              edgecolor='black', fancybox=False)
-    ax.grid(alpha=0.3, linestyle='--', linewidth=0.8)
+    # REMOVED GRID
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['left'].set_linewidth(1.5)
@@ -1147,7 +1165,7 @@ def plot_compare_roc_pr(results, y_test, fig_dir):
     plt.tight_layout()
     plt.savefig(fig_dir / "Figure4_PR_comparison.png", dpi=300, bbox_inches='tight')
     plt.close()
-
+# -------------------------------------------------------------------------
 def plot_feature_importance(model, feature_names, model_name, fig_dir, top_n=15):
     """Feature importance plot"""
     if not hasattr(model, "feature_importances_"):
@@ -1185,12 +1203,11 @@ def plot_feature_importance(model, feature_names, model_name, fig_dir, top_n=15)
     ax.spines['right'].set_visible(False)
     ax.spines['left'].set_linewidth(1.5)
     ax.spines['bottom'].set_linewidth(1.5)
-    ax.grid(axis='x', alpha=0.3, linestyle='--', linewidth=0.8)
+    # REMOVED GRID
     plt.tight_layout()
     plt.savefig(fig_dir / f"Figure5_feature_importance_{model_name}.png", 
                dpi=300, bbox_inches='tight')
     plt.close()
-
 # =========================================================================================================
 # COMPREHENSIVE FIT AND EVALUATION
 def fit_and_eval(name, model, preproc, X_train, y_train, X_valid, y_valid, 
