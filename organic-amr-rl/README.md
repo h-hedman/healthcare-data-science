@@ -1,6 +1,6 @@
 # Reinforcement Learning Simulation for Copper-Induced Antimicrobial Resistance
 
-**Preprint:** https://www.biorxiv.org/content/10.64898/2025.12.18.695270v1
+**Preprint:** https://www.biorxiv.org/content/10.64898/2025.12.18.695270v2
 
 **Manuscript under review:** *Applied Microbiology (MDPI)*
 
