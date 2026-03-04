@@ -16,8 +16,8 @@ options(lmerTest.limit = 8000)  # For lmerTest package
 # =============================================================================
 # HARD-CODED PATHS — CHANGE FOR PUBLIC RELEASE
 # =============================================================================
-##raw_csv_dir <- "ADD local file path"
-##summary_dir <- "add local file path"
+raw_csv_dir <- "G:/My Drive/Forge/Side Quest Papers/RL Agent - Applied Microbiology/src/outputs/raw_csv"
+summary_dir <- "G:/My Drive/Forge/Side Quest Papers/RL Agent - Applied Microbiology/src/outputs/summary_tables"
 
 # This is the file you already have (not in raw_csv, but in summary_tables)
 combined_path <- file.path(summary_dir, "combined_agent_cycles.csv")

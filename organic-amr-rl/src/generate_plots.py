@@ -1,7 +1,7 @@
 """
 Generate Manuscript Figures for Copper-Driven Antibiotic Resistance Study
 Author: Hayden Hedman
-Revised: 2025-12-10
+Revised: 2026-03-03
 
 Produces clean, high-resolution figures (300 dpi) for manuscript use:
 - MIC (Chloramphenicol)
@@ -13,6 +13,10 @@ Each plot overlays:
   - Random Policy
   - Rule-Based Policy
   - Q-Learner
+
+Now includes:
+  - Mean trajectory
+  - ± Standard Deviation shaded bands
 
 Figures saved to:
     /src/outputs/figures/
@@ -32,8 +36,8 @@ import sys
 # Dynamically resolve paths
 # --------------------------------------------------------------------
 CURRENT_FILE = Path(__file__).resolve()
-SCRIPTS_DIR = CURRENT_FILE.parent          # /src/scripts/
-PROJECT_ROOT = SCRIPTS_DIR.parent          # /src/
+SCRIPTS_DIR = CURRENT_FILE.parent
+PROJECT_ROOT = SCRIPTS_DIR.parent
 
 RAW_CSV_DIR = PROJECT_ROOT / "outputs" / "raw_csv"
 FIGURE_DIR = PROJECT_ROOT / "outputs" / "figures"
@@ -57,34 +61,27 @@ AGENT_FILES = {
 }
 
 # --------------------------------------------------------------------
-# Helper: smoothed mean curves (optional)
+# Compute mean ± SD by cycle
 # --------------------------------------------------------------------
-def smooth_curve(values, window=3):
-    """Simple moving average smoother."""
-    if window <= 1:
-        return values
-    return np.convolve(values, np.ones(window)/window, mode="same")
+def compute_mean_sd_curve(df, value_col):
+    grouped = df.groupby("cycle")[value_col]
+    means = grouped.mean()
+    sds = grouped.std()
 
-# --------------------------------------------------------------------
-# Helper — compute mean curve by cycle
-# --------------------------------------------------------------------
-def compute_mean_curve(df, value_col, smoothing=False):
-    grouped = df.groupby("cycle")[value_col].mean()
-    cycles = grouped.index.values
-    means = grouped.values
+    cycles = means.index.values
+    mean_vals = means.values
+    sd_vals = sds.values
 
-    if smoothing:
-        means = smooth_curve(means, window=3)
+    return cycles, mean_vals, sd_vals
 
-    return cycles, means
 
 # --------------------------------------------------------------------
 # Core plotting function
 # --------------------------------------------------------------------
-def plot_mean_curves(outcome_col, ylabel, output_name, smoothing=False):
+def plot_mean_curves(outcome_col, ylabel, output_name):
     """
     Generate a single outcome figure overlaying all three agents.
-    Highly legible manuscript-quality output.
+    Includes mean ± SD shaded bands.
     """
 
     plt.figure(figsize=(8, 6))
@@ -96,15 +93,27 @@ def plot_mean_curves(outcome_col, ylabel, output_name, smoothing=False):
             continue
 
         df = pd.read_csv(csv_path)
-        cycles, means = compute_mean_curve(df, outcome_col, smoothing=smoothing)
+        cycles, means, sds = compute_mean_sd_curve(df, outcome_col)
 
+        color = AGENT_COLORS[agent_name]
+
+        # Mean line
         plt.plot(
             cycles,
             means,
             label=agent_name,
-            color=AGENT_COLORS[agent_name],
+            color=color,
             linewidth=3.0,
-            alpha=0.90,
+            alpha=0.95,
+        )
+
+        # Shaded SD band
+        plt.fill_between(
+            cycles,
+            means - sds,
+            means + sds,
+            color=color,
+            alpha=0.20
         )
 
     plt.xlabel("Cycle", fontsize=18)
@@ -113,7 +122,6 @@ def plot_mean_curves(outcome_col, ylabel, output_name, smoothing=False):
     plt.xticks(fontsize=14)
     plt.yticks(fontsize=14)
 
-    # Ensure Y-axis has visual breathing room
     ymin, ymax = plt.ylim()
     plt.ylim(ymin, ymax * 1.05)
 
@@ -128,45 +136,40 @@ def plot_mean_curves(outcome_col, ylabel, output_name, smoothing=False):
 
     print(f"Saved figure → {out_path}")
 
+
 # --------------------------------------------------------------------
 # MAIN EXECUTION
 # --------------------------------------------------------------------
 def main():
 
-    print("Generating manuscript-quality figures...\n")
-
-    # Option to toggle mild smoothing on/off
-    SMOOTH = False
+    print("Generating manuscript-quality figures with variability bands...\n")
 
     plot_mean_curves(
         outcome_col="MIC_chloro",
         ylabel="MIC (Chloramphenicol)",
-        output_name="fig_MIC_chloramphenicol.png",
-        smoothing=SMOOTH
+        output_name="fig_MIC_chloramphenicol.png"
     )
 
     plot_mean_curves(
         outcome_col="MIC_polyB",
         ylabel="MIC (Polymyxin B)",
-        output_name="fig_MIC_polymyxinB.png",
-        smoothing=SMOOTH
+        output_name="fig_MIC_polymyxinB.png"
     )
 
     plot_mean_curves(
         outcome_col="copper",
         ylabel="Copper Concentration (mg/L)",
-        output_name="fig_copper_concentration.png",
-        smoothing=SMOOTH
+        output_name="fig_copper_concentration.png"
     )
 
     plot_mean_curves(
         outcome_col="growth_inhibition",
         ylabel="Relative Susceptibility",
-        output_name="fig_relative_susceptibility.png",
-        smoothing=SMOOTH
+        output_name="fig_relative_susceptibility.png"
     )
 
     print("\nAll figures generated successfully.")
+
 
 # --------------------------------------------------------------------
 if __name__ == "__main__":

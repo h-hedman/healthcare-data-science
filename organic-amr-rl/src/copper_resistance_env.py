@@ -25,8 +25,19 @@ class CopperResistanceEnv(gym.Env):
     """Environment for copper-driven antibiotic resistance dynamics."""
 
     metadata = {"render_modes": ["human"]}
-
-    def __init__(self, max_cycles=40):
+        
+    def __init__(
+        self,
+        max_cycles=40,
+        growth_weight=2.0,
+        mic_weight=0.01,
+        copper_weight=0.05
+    ):
+        
+        self.growth_weight = growth_weight
+        self.mic_weight = mic_weight
+        self.copper_weight = copper_weight
+                
         super().__init__()
 
         # ---------------------------------------------------------------
@@ -122,11 +133,12 @@ class CopperResistanceEnv(gym.Env):
         #  - resistance
         # ---------------------------------------------------------------
         reward = (
-            2.0 * self.growth_inhibition
-            - 0.01 * self.MIC_chloro
-            - 0.01 * self.MIC_polyB
-            - 0.05 * self.copper
+            self.growth_weight * self.growth_inhibition
+            - self.mic_weight * self.MIC_chloro
+            - self.mic_weight * self.MIC_polyB
+            - self.copper_weight * self.copper
         )
+
 
         done = self.cycle >= self.max_cycles
 

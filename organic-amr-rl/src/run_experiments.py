@@ -83,6 +83,8 @@ def run_agent(env, agent, episodes=50, label="agent"):
 # Main experiment runner
 # -------------------------------------------------------------------------------------
 def main():
+    
+    np.random.seed(88)
 
     # Output folder for raw CSVs
     output_dir = PROJECT_ROOT / "outputs" / "raw_csv"
