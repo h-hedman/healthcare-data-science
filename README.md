@@ -13,6 +13,9 @@ Collectively, these projects demonstrate experience working with real-world heal
 - **`organic-amr-rl/`**  
   Reinforcement learning–based simulation framework for exploring antimicrobial resistance dynamics under organic compound exposure, generating experimental results, figures, and tables for a microbiology methods study.
 
+- **`fluserv-net-surveillance/`**
+  Longitudinal analysis of 16 seasons of FluSurv-NET influenza hospitalization data characterizing post-pandemic recovery dynamics through descriptive epidemiology, phase-level regression, STL decomposition, Prophet time-series forecasting, and Isolation Forest anomaly detection. Developed in support of a peer-reviewed manuscript submission.
+
 - **`glp1-nlp-demo/`**  
   End-to-end NLP pipeline for abstracting structured labels from unstructured clinical notes, demonstrated using synthetic GLP-1 medication data.
 
