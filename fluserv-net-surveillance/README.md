@@ -64,6 +64,3 @@ seaborn
 
 ---
 
-## Reproducibility
-
-Random seed: 904057817. All scripts use dynamic path construction and are compatible with standard Python environments. See SM1 in the manuscript supplementary materials for full reproducibility notes.
