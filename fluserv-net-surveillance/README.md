@@ -2,7 +2,7 @@
 
 Longitudinal analysis of influenza hospitalization burden across 16 seasons (2009-2025) using FluSurv-NET population-based surveillance data. Characterizes post-pandemic recovery dynamics through descriptive epidemiology, phase-level regression, seasonal decomposition, time-series forecasting, and unsupervised anomaly detection.
 
-**Preprint:** XXX
+**Preprint:** (https://www.medrxiv.org/content/10.64898/2026.03.15.26348430v1)
 
 ---
 
