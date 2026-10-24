@@ -63,7 +63,7 @@ Collectively, these projects demonstrate experience working with real-world heal
 
 ## Repository organization and development
 
-Healthify and SCPH are maintained here as ordinary project folders, not nested Git repositories. Their original Git histories were imported on October 24, 2026. The former standalone repositories are retained as migration archives; make new changes here.
+Healthify and SCPH are maintained here as ordinary project folders, not nested Git repositories. Their original Git histories were imported on October 24, 2026. The former standalone repositories have been retired; make new changes here. Their imported history remains available in this repository.
 
 Clone `https://github.com/h-hedman/healthcare-data-science.git`, then work within the relevant project folder. Each project documents its own dependencies. For Healthify, run R commands from `healthify-flu-app/`; consult its [deployment guide](healthify-flu-app/deployment/README.md).
 

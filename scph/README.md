@@ -14,4 +14,4 @@ Expanding reporting infrastructure across communicable disease, chronic disease 
 
 ## Source location
 
-Maintain this project in the scph/ folder of https://github.com/h-hedman/healthcare-data-science. Its original Git history is retained; the former standalone repository is a migration archive.
+Maintain this project in the scph/ folder of https://github.com/h-hedman/healthcare-data-science. Its original Git history is retained; the former standalone repository has been retired.
