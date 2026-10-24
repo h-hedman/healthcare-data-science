@@ -54,10 +54,10 @@ Keep archived shinyapps.io apps intact so previously shared URLs still redirect.
 
 - The migrated Geographic and SIR public pages served the Old Faithful starter app
   during the initial check. Recovered source contains the intended heatmap and
-  influenza SIR model; these require publishing to correct the live apps.
+  influenza SIR model. Both were republished and their live titles verified.
 - The old SIR directory contained a starter `app.R` alongside `app_sir.R`.
   The local canonical entry point uses the actual simulation.
 - The recovered vaccine hospitalization overlay failed because its x values did
-  not match its counts. The local fix uses incidence dates and explicit mappings.
+  not match its counts. The published fix uses incidence dates and explicit mappings.
 - All five local smoke checks pass with R 4.5.3. Existing ggplot2/incidence
   deprecation warnings are non-blocking; no modeling redesign was performed.
