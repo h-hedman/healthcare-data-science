@@ -57,14 +57,14 @@ Due to free-tier hosting limitations, a hybrid deployment approach is used:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/h-hedman/healthify-flu-app.git
-cd healthify-flu-app
+git clone https://github.com/h-hedman/healthcare-data-science.git
+cd healthcare-data-science/healthify-flu-app
 ```
 
 ### 2. Run Locally
 
 Each interactive app has its own entry point under `apps/<app_name>/app.R`.
-Install the dependencies once, then run an app from the repository root:
+Install the dependencies once, then run an app from the Healthify project folder:
 
 ```r
 install.packages(c("shiny", "ggplot2", "deSolve", "viridis", "reshape2",

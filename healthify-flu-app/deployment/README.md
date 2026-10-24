@@ -14,7 +14,7 @@ and installed packages are ignored.
 
 ## Connect this computer once
 
-Open RStudio in this repository and run:
+Open RStudio in the `healthify-flu-app/` project folder and run:
 
 ```r
 source("scripts/project-library.R")
@@ -31,7 +31,7 @@ are retained locally for reference and are not committed.
 
 ## Publish an app update
 
-From the repository root, using Rscript on PATH:
+From the `healthify-flu-app/` project folder, using Rscript on PATH:
 
 ```powershell
 Rscript --vanilla scripts/check-apps.R
@@ -46,7 +46,7 @@ for Geographic and NLP, sliders for SIR/SVI/Vaccine, and the vaccine hospitaliza
 
 ## Portfolio updates
 
-Commit and push HTML changes to this repository to update GitHub Pages. Each of
+Commit and push HTML changes to the parent `healthcare-data-science` repository to update GitHub Pages. Each of
 the five iframe sources points directly to its public Connect Cloud URL.
 Keep archived shinyapps.io apps intact so previously shared URLs still redirect.
 
@@ -61,3 +61,6 @@ Keep archived shinyapps.io apps intact so previously shared URLs still redirect.
   not match its counts. The published fix uses incidence dates and explicit mappings.
 - All five local smoke checks pass with R 4.5.3. Existing ggplot2/incidence
   deprecation warnings are non-blocking; no modeling redesign was performed.
+
+
+The canonical site is https://h-hedman.github.io/healthcare-data-science/healthify-flu-app/. The former standalone Healthify site redirects here. Cloud content IDs and public Shiny URLs are unchanged.
