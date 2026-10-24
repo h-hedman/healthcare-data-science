@@ -1,0 +1,3 @@
+Model ,Accuracy,Precision (Class 0),Recall (Class 0),Precision (Class 1),Recall (Class 1),F1-score
+Age Group,0.742554166,0.816083716,0.682368453,0.68076135,0.814969714,0.74
+Race/Ethnicity,0.768577189,0.802155992,0.72018218,0.740633245,0.818128825,0.77

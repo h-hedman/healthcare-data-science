@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthify: Influenza Population Health Analytics Platform</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 2rem auto;
+      max-width: 900px;
+      padding: 0 1rem;
+      background-color: #fefefe;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #0071bc;
+    }
+
+    code, pre {
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 10px;
+    }
+
+    a {
+      color: #0071bc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Healthify: Influenza Population Health Analytics Platform</h1>
+
+  <h2>Project Overview</h2>
+  <p>
+    <strong>Healthify</strong> is a lightweight analytics platform designed for public health professionals and population-based researchers 
+    to explore, model, and forecast seasonal influenza trends. Built using open-source tools and powered by CDC surveillance data, the 
+    platform enables data-driven insights into geographic and demographic flu patterns across the United States.
+  </p>
+
+  <p>
+    The application integrates biostatistical, geospatial, and machine learning methods to support real-time epidemiological decision-making 
+    and facilitate public health research, planning, and intervention design.
+  </p>
+
+  <h2>Key Capabilities</h2>
+
+  <h3>1. Data Integration and Processing</h3>
+  <ul>
+    <li><strong>Source:</strong> <a href="https://gis.cdc.gov/GRASP/Fluview/FluHospRates.html">CDC FluSurv-NET</a></li>
+    <li><strong>Coverage:</strong> ~30 million individuals across 90+ U.S. counties and 14 states</li>
+    <li><strong>Pipeline:</strong> Data cleaning, transformation, and aggregation using R (with support for stratification by age, race, and region)</li>
+  </ul>
+
+  <h3>2. Epidemiological Modeling</h3>
+  <ul>
+    <li>Incidence and hospitalization trends over time</li>
+    <li>Time series forecasting (ARIMA/SARIMA)</li>
+    <li>Compartmental models (SIR, SEIR) for epidemic simulations</li>
+    <li>Logistic regression and machine learning for risk prediction</li>
+  </ul>
+
+  <h3>3. Geospatial & Social Vulnerability Insights</h3>
+  <ul>
+    <li>County- and state-level visualizations of flu burden</li>
+    <li>Overlay of Social Vulnerability Index (SVI) impacts on epidemic curves</li>
+    <li>Exploration of health disparities and demographic risk patterns</li>
+  </ul>
+
+  <h3>4. Visualization & Accessibility</h3>
+  <ul>
+    <li><strong>Interactive dashboards:</strong> Built with R Shiny (for dynamic exploration)</li>
+    <li><strong>Static views:</strong> Built with DataWrapper for lightweight public sharing</li>
+  </ul>
+
+  <h2>Target Users</h2>
+  <p>This platform supports analysts, epidemiologists, and program leads across:</p>
+  <ul>
+    <li>Public health agencies (e.g., CDC, state/local health departments)</li>
+    <li>Academic institutions (epidemiology and public health researchers)</li>
+    <li>Health systems and NGOs focused on infectious disease mitigation</li>
+    <li>Biopharma and policy organizations tracking population health signals</li>
+  </ul>
+
+  <h2>Getting Started</h2>
+  <h3>Clone Repository</h3>
+  <pre><code>git clone https://github.com/h-hedman/healthify-flu-app.git
+cd healthify-flu-app</code></pre>
+
+  <p>Explore the codebase and launch the Shiny app locally, or access the hosted version via:</p>
+
+</body>
+</html>

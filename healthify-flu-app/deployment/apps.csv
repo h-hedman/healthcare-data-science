@@ -1,0 +1,6 @@
+app,app_path,content_id,public_url,portfolio_page
+app_geographic,apps/app_geographic,01a16f4a-3cfe-1db7-e67d-68155b1235b2,https://healthify-flu-app-geographic.share.connect.posit.cloud/,geographic.html
+app_nlp_symptoms,apps/app_nlp_symptoms,01a16f4a-3da3-597e-3e94-a2446e904fd2,https://healthify-flu-app-nlp-symptoms.share.connect.posit.cloud/,nlp_symptoms.html
+app_sir,apps/app_sir,01a16f4a-3d2a-6916-4b59-533566a1458d,https://healthify-flu-app-sir.share.connect.posit.cloud/,sir.html
+app_svi,apps/app_svi,01a16f4a-3d56-914c-c35a-e30237a047a3,https://healthify-flu-app-svi.share.connect.posit.cloud/,svi.html
+app_vaccine,apps/app_vaccine,01a16f4a-3d05-3274-62f6-cd12a11d06ee,https://healthify-flu-app-vaccine.share.connect.posit.cloud/,vaccine_simulation_coverage.html

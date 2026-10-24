@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthify | SVI Epidemic Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f9fafa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(to right, #005eb8, #007c9e);
+      color: white;
+      padding: 1.5rem 2rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 100px auto 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 2rem;
+    }
+
+    .iframe-container {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    Healthify: SVI Epidemic Impact
+  </div>
+
+  <div class="container">
+    <div class="description">
+      <p>
+        This simulation illustrates how the <strong>Social Vulnerability Index (SVI)</strong> influences epidemic spread.
+        Higher SVI values are associated with increased flu burden due to limited healthcare access, delayed intervention, and underlying structural factors.
+      </p>
+    </div>
+
+    <div class="iframe-container">
+      <iframe
+        title="SVI Epidemic Curve Shiny App"
+        src="https://healthify-flu-app-svi.share.connect.posit.cloud/"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+</body>
+</html>
